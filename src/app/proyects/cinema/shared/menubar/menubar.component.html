@@ -1,0 +1,84 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <button class="navbar-toggler" 
+        type="button" 
+        data-bs-toggle="collapse" 
+        data-bs-target="#navbarSupportedContent" 
+        aria-controls="navbarSupportedContent" 
+        aria-expanded="false" 
+        aria-label="Toggle navigation">
+        
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand ms-3" href="#">Navbar</a>
+    
+    <!-- cart and user -->
+    <div class="space-bs">
+          <button 
+            pButton
+            type="button"
+            icon="pi pi-shopping-cart"
+            class="space-b p-button-raised p-button-rounded"></button>
+
+            <button 
+            pButton
+            type="button"
+            icon="pi pi-user"
+            class="p-button-raised p-button-rounded"></button>
+      </div>
+
+      <!-- Items -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="nav-ul navbar-nav me-auto mb-2 mb-lg-0">
+
+          <li *ngFor="let item of items"
+          class="nav-item">
+
+          <hr>
+            <a [routerLink]="item.redirecTo"
+            class="nav-link active" 
+
+            data-bs-toggle="collapse" 
+            data-bs-target="#navbarSupportedContent" 
+            aria-controls="navbarSupportedContent" 
+            aria-expanded="false" 
+            aria-label="Toggle navigation"
+            aria-current="page">{{item.label}}
+            </a>
+          </li>
+
+        </ul>
+
+        <!-- Social -->
+        <hr>
+        <div class="social">
+            <button 
+            pButton
+            type="button"
+            icon="pi pi-facebook"
+            class="p-button-raised p-button-rounded"></button>
+
+            <button 
+            pButton
+            type="button"
+            icon="pi pi-youtube"
+            class="p-button-raised p-button-rounded"></button>
+
+            <button 
+            pButton
+            type="button"
+            icon="pi pi-twitter"
+            class="p-button-raised p-button-rounded"></button>
+
+            <button 
+            pButton
+            type="button"
+            icon="pi pi-discord"
+            class="p-button-raised p-button-rounded"></button>
+        </div>
+
+      </div>
+
+    </div>
+  </nav>
+

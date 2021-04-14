@@ -1,0 +1,103 @@
+
+
+<div class="container mt-5 mb-5">
+    <h3>Movie title</h3>
+    <span>Director: name</span>
+
+    <hr>
+
+    <div class="row">
+        <div class="col btn-style-l d-grid gap-2">
+            <button (click)="calendar()"
+            [ngClass]="{'btn-act': isCalendar}"
+            class="btn-style btn btn-outline-primary btn-block">
+                Horarios
+            </button>
+        </div>
+
+        <div class="col btn-style-r d-grid gap-2">
+            <button (click)="synopsis()"
+            [ngClass]="{'btn-act': !isCalendar}"
+            class="btn-style btn btn-outline-primary btn-block">
+                Synopsis
+            </button>
+        </div>
+    </div>
+
+    <div class="row mt-5 ms-2">
+    
+    <!-- Calendar -->
+    <div *ngIf="isCalendar"
+    class="col-12">
+        <h4>Select a movie show</h4>
+
+        <hr>
+        <h4>Shows</h4>
+
+        <p class="mt-3">Traditional - 2D Esp</p>
+        <button (click)="selectHour()"
+        pButton
+        label="15:30"
+        type="button"
+        [icon]="iconHour"
+        class="p-button-raised 
+        p-button-rounded p-button-outlined
+        p-button-info"></button>
+
+        <p class="mt-3">Traditional - 2D Sub</p>
+        <button (click)="selectHour()"
+        pButton
+        label="15:30"
+        type="button"
+        [icon]="iconHour"
+        class="p-button-raised 
+        p-button-rounded p-button-outlined
+        p-button-info"></button>
+
+        <!-- <div class="form-check radio">
+            <input class="form-check-input" 
+            type="radio" 
+            name="flexRadioDefault" 
+            id="flexRadioDefault1">
+
+            <label class="form-check-label" 
+            for="flexRadioDefault1">
+              15:30
+            </label>
+        </div> -->
+
+        <hr>
+        <div class="btn-buy d-grid gap-2">
+            <button class=" btn btn-outline-info">
+                Buy tickets
+            </button>
+        </div>
+    </div>
+
+    <!-- Synopsis -->
+        <div *ngIf="!isCalendar"
+        class="col-12">
+            <p class="pi pi-tag"> +18</p>
+            <br>
+            <p class="pi pi-clock"> 120 m</p>
+            <br>
+            <p class="pi pi-info-circle"> Drama</p>
+
+            <hr>
+
+            <h4>Synopsis</h4>
+            <p>Lorem ipsum dolor sit amet consectetur 
+                adipisicing elit. Ut, qui assumenda 
+                asperiores quidem temporibus inventore 
+                laudantium, dicta odit sequi rem voluptas 
+                autem voluptate 
+                debitis esse unde, sapiente eveniet 
+                nobis quam!</p>
+
+            <hr>
+
+            <h3>Cast</h3>
+            <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+    </div>
+</div>

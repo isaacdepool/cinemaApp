@@ -1,0 +1,58 @@
+.space-bs{
+    position: absolute;
+    right: 20px;
+    top: 6px;
+}
+
+.space-b{
+    margin-right: 10px;
+}
+
+.nav-ul{
+    margin-top: unset;
+}
+
+hr{
+    display: none;
+}
+
+.social{
+    display: none;
+    justify-content: unset;
+    width: unset;
+    margin: unset;
+}
+
+@media screen and (max-width:991px) {
+    
+    .navbar .container-fluid{
+        justify-content: unset !important;
+    }
+
+    hr{
+        display: revert !important;
+    }
+
+    .social{
+        display: flex;
+        justify-content: space-between;
+        width: 60%;
+        margin: auto;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .nav-ul{
+        margin-top: 3rem;
+    }
+
+    .space-bs{
+        position: absolute;
+        right: 20px;
+        top: 6px;
+    }
+    
+    .space-b{
+        margin-right: 10px;
+    }
+}

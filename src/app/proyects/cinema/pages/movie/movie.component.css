@@ -1,0 +1,29 @@
+.btn-act{
+    border-bottom: solid !important;
+}
+
+.btn-style{
+    border: none;
+}
+
+.btn-style-r{
+    padding-left: 0;
+}
+
+.btn-style-l{
+    padding-right: 0 ;
+}
+
+.radio{
+    border-radius: 50px;
+    border: solid 
+}
+
+.btn-buy{
+    width: 50%;
+    margin: auto;
+}
+
+.btn-buy button{
+    border-radius: 50px;
+}
