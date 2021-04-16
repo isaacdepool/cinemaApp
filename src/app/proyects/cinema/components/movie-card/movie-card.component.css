@@ -4,7 +4,7 @@
 
 .button-style{
     position: relative;
-    bottom: 10px;
+    bottom: 20px;
     margin-right: 20px;
     margin-left: 20px;
 }
@@ -12,4 +12,12 @@
 .title{
     justify-content: center;
     display: flex;
+}
+
+.img-fluid {
+    height: 300px;
+}
+
+img{
+    cursor: pointer;
 }

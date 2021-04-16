@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { MovieService } from '../../services/movie.service';
+import { Movie } from '../../interfaces/interfaces';
+import { FilterService } from '../../services/filter.service';
 
 @Component({
   selector: 'app-movie',
@@ -9,10 +13,43 @@ export class MovieComponent implements OnInit {
 
   isCalendar: boolean = true;
   iconHour: string = 'pi pi-circle-off';
+  idMovie: string = '';
 
-  constructor() { }
+  moviesData: Movie[] = [];
+  movieData!: Movie;
+  isData: boolean = false;
+  params: any;
 
-  ngOnInit(): void {
+  constructor( private activatedRoute: ActivatedRoute,
+               private movieSvc: MovieService,
+               private filterSvc: FilterService ) {   
+                
+        this.activatedRoute.paramMap.subscribe( resp => {
+          
+          this.idMovie = resp.get('id') || '';
+        });
+
+        this.movieSvc.getMovies().subscribe( resp =>{
+    
+          this.moviesData = (resp.moviesData) || [];
+
+          this.moviesData = this.filterSvc.filter(this.moviesData, this.idMovie);
+          this.movieData = this.moviesData[0];
+
+          if(this.movieData){
+            this.isData = true;
+          }
+
+          if(this.movieData.role === 'COMING-SOON'){
+            this.isCalendar = false;  
+          }
+        });
+        
+      }
+      
+    ngOnInit(): void {
+        
+      
   }
 
   calendar(){

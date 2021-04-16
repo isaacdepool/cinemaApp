@@ -3,12 +3,13 @@
 </div>
 
 <div class="row">
-    <div *ngFor="let item of [1,1,1,1,1,1,1]"
+    <div *ngFor="let movie of movies"
     class="col-md-4 col-lg-3 col-6 mt-5">
         <div class="card card-style">
-            <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a3ec971a-50ed-4cf1-a4ed-1da3c232d2b5/de6xv7a-f0b216bb-61fd-4969-acb6-094de3b3d626.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvYTNlYzk3MWEtNTBlZC00Y2YxLWE0ZWQtMWRhM2MyMzJkMmI1XC9kZTZ4djdhLWYwYjIxNmJiLTYxZmQtNDk2OS1hY2I2LTA5NGRlM2IzZDYyNi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.M4o6-NiwMgWTDr0cmbwfupwOenqsrhYBOHdxfYSR3zI" class="card-img-top" alt="...">
-            <button 
-            routerLink="../movie"
+            <img (click)="redirecTo( movie )"
+            [src]="movie.vertical_poster" 
+            class="card-img-top img-fluid" alt="...">
+            <button (click)="redirecTo( movie )"
             pButton 
             [label]="buttonTitle"
             type="button"
@@ -16,3 +17,5 @@
         </div>
     </div>
 </div>
+
+

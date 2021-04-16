@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Movie } from '../../interfaces/interfaces';
+import { MovieService } from '../../services/movie.service';
 
 @Component({
   selector: 'app-premieres',
@@ -7,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PremieresComponent implements OnInit {
 
-  constructor() { }
+  movies: Movie[] = []; 
+
+  constructor( private movieSvc: MovieService) { }
 
   ngOnInit(): void {
+    this.movieSvc.getMovies().subscribe( resp => {
+      
+      this.getPremieres(resp.moviesData || []);
+
+    });
+  }
+
+  getPremieres( movies: Movie[] ){
+
+    if(movies.length > 0){
+ 
+      for (const movie of movies) {
+
+        if(movie.role === 'PREMIERE'){
+          this.movies.push(movie);
+          console.log(this.movies);
+       }
+      }
+
+    }
   }
 
 }

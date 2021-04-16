@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MovieService } from '../../services/movie.service';
+import { Movie } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-now-playing',
@@ -7,9 +9,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NowPlayingComponent implements OnInit {
 
-  constructor() { }
+  movies: Movie[] = []; 
+
+  constructor( private movieSvc: MovieService ) {
+
+   }
 
   ngOnInit(): void {
+
+    this.movieSvc.getMovies().subscribe( resp => {
+      
+      this.getNowPlaying(resp.moviesData || []);
+
+    });    
+  }
+
+  getNowPlaying( movies: Movie[] ){
+
+    if(movies.length > 0){
+ 
+      for (const movie of movies) {
+
+        if(movie.role === 'NOW-PLAYING'){
+          this.movies.push(movie);
+          console.log(this.movies);
+       }
+      }
+
+    }
   }
 
 }

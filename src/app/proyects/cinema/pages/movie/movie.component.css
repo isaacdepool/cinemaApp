@@ -1,10 +1,37 @@
-.btn-act{
-    border-bottom: solid !important;
-}
-
 .btn-style{
     border: none;
+    border-radius: 0;
+    border-bottom: solid gray !important;
 }
+
+.btn-style:hover{
+    background: none;
+}
+
+.btn-outline-primary:hover {
+    color: inherit;
+}
+
+.btn-act{
+    border-bottom: solid #5bc0de !important;
+}
+
+.btn{
+    transition: unset;
+    color: #fff;
+}
+
+button:focus:not(:focus-visible) {
+    outline: unset;
+}
+.btn-check:focus+.btn-outline-primary, .btn-outline-primary:focus {
+    box-shadow: unset;
+}
+.btn-check:focus+.btn, .btn:focus {
+    outline: unset;
+    box-shadow: unset;
+}
+
 
 .btn-style-r{
     padding-left: 0;
@@ -27,3 +54,24 @@
 .btn-buy button{
     border-radius: 50px;
 }
+
+.poster{
+    width: 100%;
+    height: 30vw;
+    background-size: cover;
+    background-repeat: round;
+}
+
+.poster img{
+    height: 100%;
+    width: 100%;
+}
+
+@media screen and (max-width: 900px){
+
+.poster{
+    height: 50vw;
+}
+
+}
+
