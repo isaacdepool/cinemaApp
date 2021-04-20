@@ -9,11 +9,15 @@ import { Menu } from '../../interfaces/interfaces';
 export class MenubarComponent implements OnInit {
 
   items: Menu[] = [];
+  popover: any = document.querySelector('#popover');
+  tooltip: any = document.querySelector('#tooltip');
 
   constructor() { }
 
   ngOnInit(): void {
     this.MenuItems();
+
+    
   }
 
   MenuItems(){

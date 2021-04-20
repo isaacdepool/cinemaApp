@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthComponent } from './pages/auth/auth.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NowPlayingComponent } from './pages/now-playing/now-playing.component';
 import { ComingSoonComponent } from './pages/coming-soon/coming-soon.component';
@@ -16,17 +15,21 @@ const routes: Routes = [
     component: CentralPageComponent,
     children: [
       { path: 'home',        component: HomeComponent },
-      { path: 'auth',        component: AuthComponent },
       { path: 'now-playing', component: NowPlayingComponent },
       { path: 'coming-soon', component: ComingSoonComponent },
       { path: 'premieres',   component: PremieresComponent },
       { path: 'movie/:id',       component: MovieComponent },
       { path: 'details',     component: DetailsComponent },
       { path: 'cart',        component: CartComponent },
+      {
+        path: 'auth',
+        loadChildren: () => import('../cinema/auth/auth.module').then( m => m.AuthModule )
+      },
 
       { path: '**',          redirectTo: 'home'}
+      
     ]
-  }
+  },
 ];
 
 @NgModule({

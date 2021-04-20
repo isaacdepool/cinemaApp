@@ -1,5 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
+<nav class="nb-c
+navbar 
+navbar-expand-lg 
+navbar-dark bg-dark">
+    <div class="container-fluid cont">
         <button class="navbar-toggler" 
         type="button" 
         data-bs-toggle="collapse" 
@@ -10,40 +13,71 @@
         
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand ms-3" href="#">Navbar</a>
-    
-    <!-- cart and user -->
-    <div class="space-bs">
-          <button 
-            pButton
-            type="button"
-            icon="pi pi-shopping-cart"
-            class="space-b p-button-raised p-button-rounded"></button>
 
-            <button 
-            pButton
-            type="button"
-            icon="pi pi-user"
-            class="p-button-raised p-button-rounded"></button>
+    <div class="nav-t">
+      <div class="logo">
+        <a routerLink="home"
+        class="navbar-brand ms-3" >Navbar</a>
       </div>
+      
+      <!-- cart and user -->
+      <div class="space-bs">
+            <button routerLink="cart"
+              pButton
+              type="button"
+              icon="pi pi-shopping-cart"
+              class="space-b 
+              p-button-raised
+              p-button-rounded
+              p-button-outlined"> 
+            </button>
+  
+              <button routerLink="auth"
+              pButton
+              label="Login"
+              type="button"
+              icon="pi pi-user"
+              ui-icon-color="whitte"
+              class="space-b 
+              p-button-raised 
+              p-button-rounded
+              p-button-outlined"></button>
+  
+        </div>
+
+    </div>
 
       <!-- Items -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="nav-ul navbar-nav me-auto mb-2 mb-lg-0">
 
           <li *ngFor="let item of items"
-          class="nav-item">
+          class="nav-item min">
 
           <hr>
-            <a [routerLink]="item.redirecTo"
-            class="nav-link active" 
-
+            <a 
+            [routerLink]="item.redirecTo"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="active-rl"
+            class="nav-link" 
             data-bs-toggle="collapse" 
             data-bs-target="#navbarSupportedContent" 
             aria-controls="navbarSupportedContent" 
             aria-expanded="false" 
             aria-label="Toggle navigation"
             aria-current="page">{{item.label}}
+            </a>
+          </li>
+
+          <li *ngFor="let item of items"
+          class="nav-item max">
+
+          <hr>
+            <a 
+            [routerLink]="item.redirecTo"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="active-rl"
+            class="nav-link">{{item.label}}
             </a>
           </li>
 

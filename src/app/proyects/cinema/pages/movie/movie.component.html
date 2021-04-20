@@ -9,9 +9,7 @@
     <div class="container mt-5 mb-5 content">
         <h3>{{ movieData.name }}</h3>
         <span>Directors: {{ movieData.directors }}</span>
-    
-        <hr>
-    
+        
         <div class="row">
             <div *ngIf="movieData.role != 'COMING-SOON'"
             class="col btn-style-l d-grid gap-2">
@@ -32,7 +30,7 @@
             </div>
         </div>
     
-        <div class="row mt-5 ms-2">
+        <div class="row mt-5 ms-3 me-3">
         
         <!-- Calendar -->
         <div *ngIf="isCalendar && movieData.role != 'COMING-SOON'"

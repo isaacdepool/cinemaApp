@@ -60,6 +60,7 @@ button:focus:not(:focus-visible) {
     height: 30vw;
     background-size: cover;
     background-repeat: round;
+    background-attachment: scroll;
 }
 
 .poster img{
