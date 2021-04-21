@@ -6,6 +6,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { MainComponent } from './pages/main/main.component';
 import { PrimeNgModule } from 'src/app/prime-ng/prime-ng.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { PrimeNgModule } from 'src/app/prime-ng/prime-ng.module';
   imports: [
     CommonModule,
     AuthRoutingModule,
+    ReactiveFormsModule,
     PrimeNgModule
   ]
 })

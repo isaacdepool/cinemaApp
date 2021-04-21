@@ -26,3 +26,23 @@ export interface Movie{
     role: string,
     status: boolean
 }
+
+export interface CrudUser{
+    ok: boolean,
+    msg: string,
+    userData?: User,
+    usersData?: User[]
+}
+
+export interface User{
+    id: string,
+    name: string,
+    last_name?: string,
+    date_birth?: string,
+    email: string,
+    password?: string,
+    direction?: string,
+    phone?: string,
+    status?: boolean
+}
+
