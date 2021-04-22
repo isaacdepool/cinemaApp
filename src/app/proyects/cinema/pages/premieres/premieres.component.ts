@@ -29,7 +29,6 @@ export class PremieresComponent implements OnInit {
 
         if(movie.role === 'PREMIERE'){
           this.movies.push(movie);
-          console.log(this.movies);
        }
       }
 

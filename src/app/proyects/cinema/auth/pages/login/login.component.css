@@ -29,6 +29,10 @@ a{
     color: #fff;
 }
 
+.r-err{
+    color: rgb(199, 59, 59);
+}
+
 textarea:focus, 
 textarea.form-control:focus, 
 input.form-control:focus, 
@@ -41,6 +45,11 @@ input[type=number]:focus,
 [type=email].form-control:focus, 
 [type=tel].form-control:focus, 
 [contenteditable].form-control:focus {
+  border-bottom: none;
+  box-shadow: inset 0 -1px 0 white;
+}
+
+.invalid{
   border-bottom: none;
   box-shadow: inset 0 -1px 0 red;
 }

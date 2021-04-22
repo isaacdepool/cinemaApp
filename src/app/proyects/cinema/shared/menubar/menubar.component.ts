@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Menu } from '../../interfaces/interfaces';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-menubar',
@@ -9,14 +10,21 @@ import { Menu } from '../../interfaces/interfaces';
 export class MenubarComponent implements OnInit {
 
   items: Menu[] = [];
+  isActiveUser: boolean = false;
+
   popover: any = document.querySelector('#popover');
   tooltip: any = document.querySelector('#tooltip');
-
-  constructor() { }
+  
+  constructor( private userSvc: UserService ) { }
 
   ngOnInit(): void {
     this.MenuItems();
 
+    this.userSvc.validateToken().subscribe( resp =>{
+      this.isActiveUser = resp;
+    });
+
+    
     
   }
 
@@ -40,8 +48,14 @@ export class MenubarComponent implements OnInit {
         redirecTo: 'coming-soon'
       }
     ]
+  }
 
+  logout(){
+    this.userSvc.logout();
 
+    this.userSvc.validateToken().subscribe( resp =>{
+      this.isActiveUser = resp;      
+    });
   }
 
 }

@@ -30,6 +30,10 @@ export interface Movie{
 export interface CrudUser{
     ok: boolean,
     msg: string,
+    id?: string,
+    name?: string,
+    email?: string,
+    token?:string,
     userData?: User,
     usersData?: User[]
 }

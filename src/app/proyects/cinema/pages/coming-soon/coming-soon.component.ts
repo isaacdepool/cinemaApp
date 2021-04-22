@@ -29,7 +29,6 @@ export class ComingSoonComponent implements OnInit {
 
         if(movie.role === 'COMING-SOON'){
           this.movies.push(movie);
-          console.log(this.movies);
        }
       }
 

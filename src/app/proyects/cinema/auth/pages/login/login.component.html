@@ -1,10 +1,14 @@
 
 
-<form>
+<form [formGroup]="myForm"
+autocomplete="off">
 
     <div class="mb-2 form-floating">
         <input type="text" 
         placeholder="Email"
+        formControlName="email"
+        [ngClass]="isValidControl('email')? 'invalid': ''"
+        [ngClass]="err.isErr? 'invalid': ''"
         class="form-control">
 
         <label for="floatingInput"
@@ -15,6 +19,9 @@
         <input [type]="password.typePassword"
         id="floatingInput"
         placeholder="Password"
+        [ngClass]="err.isErr? 'invalid': ''"
+        formControlName="password"
+        
         class="form-control">
         
         <label for="floatingInput"
@@ -25,20 +32,25 @@
         class="eye"></p>
     </div>
 
-    <div class="mb-4">
+    <span *ngIf="err.isErr"
+    class="r-err">* {{err.msg |titlecase}}</span>
+
+    <div class="mt-4 mb-4">
         <a href="">Forgot your password?</a>
     </div>
 
     <div class="row">
         <div class="col-12 col-md-6 mb-2 d-grid gap-2">
-            <button class="btn btn-outline-primary">
+            <button class="btn btn-primary"
+            (click)="login()"
+            [disabled]="myForm.invalid">
                 Login
             </button>
         </div>
     
         <div class="col-12 col-md-6 mb-2 d-grid gap-2">
             <button routerLink="../register"
-            class="btn btn-primary">
+            class="btn btn-outline-primary">
                 Register
             </button>
         </div>

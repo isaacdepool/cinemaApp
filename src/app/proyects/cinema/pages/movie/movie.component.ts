@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from '../../services/movie.service';
 import { Movie } from '../../interfaces/interfaces';
 import { FilterService } from '../../services/filter.service';
@@ -22,12 +22,13 @@ export class MovieComponent implements OnInit {
 
   constructor( private activatedRoute: ActivatedRoute,
                private movieSvc: MovieService,
-               private filterSvc: FilterService ) {   
+               private filterSvc: FilterService,
+               private router: Router ) {   
                 
         this.activatedRoute.paramMap.subscribe( resp => {
           
           this.idMovie = resp.get('id') || '';
-        });
+        }); 
 
         this.movieSvc.getMovies().subscribe( resp =>{
     
@@ -38,11 +39,12 @@ export class MovieComponent implements OnInit {
 
           if(this.movieData){
             this.isData = true;
-          }
+            if(this.movieData.role === 'COMING-SOON'){
+              this.isCalendar = false;  
+            }
 
-          if(this.movieData.role === 'COMING-SOON'){
-            this.isCalendar = false;  
-          }
+          }else this.router.navigateByUrl('/proyects/cinema/home');
+
         });
         
       }

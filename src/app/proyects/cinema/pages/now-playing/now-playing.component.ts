@@ -32,7 +32,6 @@ export class NowPlayingComponent implements OnInit {
 
         if(movie.role === 'NOW-PLAYING'){
           this.movies.push(movie);
-          console.log(this.movies);
        }
       }
 

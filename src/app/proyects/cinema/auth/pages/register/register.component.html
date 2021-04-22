@@ -85,6 +85,7 @@ autocomplete="off">
                 formControlName="email"
                 placeholder="Email"
                 [ngClass]="isValidControl('email')? 'invalid': ''"
+                [ngClass]="err.isErr? 'invalid': ''"
                 class="form-control">
         
                 <label for="floatingInput"
@@ -154,6 +155,7 @@ autocomplete="off">
                         <p *ngIf="isValidControl('email')">* Correct Email is necessary (example@example.com).</p>
                         <p *ngIf="isValidControl('password')">* Correct Password is necessary.</p>
                         <p *ngIf="myForm.controls!.confPass.errors?.noEqual">* The Passwords is not the same.</p>
+                        <p *ngIf="err.isErr">* {{err.msg |titlecase}}.</p>
                     </div>
             </div>
         </div>

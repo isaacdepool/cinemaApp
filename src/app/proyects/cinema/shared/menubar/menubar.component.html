@@ -32,9 +32,22 @@ navbar-dark bg-dark">
               p-button-outlined"> 
             </button>
   
-              <button routerLink="auth"
+              <button *ngIf="!isActiveUser"
+              routerLink="auth"
               pButton
               label="Login"
+              type="button"
+              icon="pi pi-user"
+              ui-icon-color="whitte"
+              class="space-b 
+              p-button-raised 
+              p-button-rounded
+              p-button-outlined"></button>
+
+              <button *ngIf="isActiveUser"
+              (click)="logout()"
+              pButton
+              label="Logout"
               type="button"
               icon="pi pi-user"
               ui-icon-color="whitte"
