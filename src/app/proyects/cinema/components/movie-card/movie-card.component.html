@@ -3,19 +3,33 @@
 </div>
 
 <div class="row">
-    <div *ngFor="let movie of movies"
-    class="col-md-4 col-lg-3 col-6 mt-5">
-        <div class="card card-style">
-            <img (click)="redirecTo( movie )"
-            [src]="movie.vertical_poster" 
-            class="card-img-top img-fluid" alt="...">
-            <button (click)="redirecTo( movie )"
-            pButton 
-            [label]="buttonTitle"
-            type="button"
-            class="button-style p-button-raised p-button-rounded"></button>
+    <ng-container *ngIf="movies.length > 0">
+        <div *ngFor="let movie of movies"
+        class="col-md-4 col-lg-3 col-6 mt-5">
+            <div class="card card-style animated fadeIn">
+                <img (click)="redirecTo( movie )"
+                [src]="movie.vertical_poster" 
+                class="card-img-top img-fluid" alt="...">
+                <button (click)="redirecTo( movie )"
+                pButton 
+                [label]="buttonTitle"
+                type="button"
+                class="button-style p-button-raised p-button-rounded"></button>
+            </div>
         </div>
-    </div>
+    </ng-container>
+
+    <ng-container *ngIf="movies.length === 0">
+        <div *ngFor="let item of [1,1,1]"
+        class="col-md-4 col-lg-3 col-6 mt-5 animated fadeIn">
+            
+            <p-skeleton
+            class="card card-style"
+            height="300px">
+                
+            </p-skeleton>
+        </div>
+    </ng-container>
 </div>
 
 

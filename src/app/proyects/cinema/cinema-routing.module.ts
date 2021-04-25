@@ -11,6 +11,10 @@ import { MovieComponent } from './pages/movie/movie.component';
 
 const routes: Routes = [
   {
+    path: 'admin',
+    loadChildren: () => import('../cinema/admin/admin.module').then( m => m.AdminModule )
+  },
+  {
     path: '',
     component: CentralPageComponent,
     children: [
@@ -21,7 +25,7 @@ const routes: Routes = [
       { path: 'movie/:id',       component: MovieComponent },
       { path: 'details',     component: DetailsComponent },
       { path: 'cart',        component: CartComponent },
-      {
+      { 
         path: 'auth',
         loadChildren: () => import('../cinema/auth/auth.module').then( m => m.AuthModule )
       },
@@ -29,7 +33,8 @@ const routes: Routes = [
       { path: '**',          redirectTo: 'home'}
       
     ]
-  },
+  }
+  
 ];
 
 @NgModule({

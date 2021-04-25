@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../auth/services/user.service';
 
 @Component({
   selector: 'app-home',

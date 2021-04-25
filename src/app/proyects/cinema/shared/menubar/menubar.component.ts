@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Menu } from '../../interfaces/interfaces';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../auth/services/user.service';
 
 @Component({
   selector: 'app-menubar',
@@ -24,7 +24,7 @@ export class MenubarComponent implements OnInit {
       this.isActiveUser = resp;
     });
 
-    
+     
     
   }
 

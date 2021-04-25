@@ -1,0 +1,51 @@
+span{
+    color: rgb(189, 187, 187);
+}
+
+.h-p{
+    display: none;
+}
+
+.v-p{
+    display: unset;
+}
+
+.block{
+    width: 100%;
+}
+
+.p-calendar .p-inputtext {
+    flex: 1 1 auto;
+    width: 100% !important;
+}
+
+.edit{
+    background: rgb(132, 160, 30);
+}
+
+.edit:hover{
+    background: rgb(111, 135, 27);
+}
+
+.delete{
+    background: rgb(206, 43, 43);
+}
+
+.delete:hover{
+    background: rgb(165, 36, 36);
+}
+
+p-calendar{
+    display: block !important;
+}
+
+@media screen and ( max-width: 960px ) {
+   
+    .v-p{
+        display: none;
+    }
+    
+    .h-p{
+        display: unset;
+    }
+}

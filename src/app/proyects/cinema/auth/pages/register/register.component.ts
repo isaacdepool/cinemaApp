@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidatorsService } from '../../services/validators.service';
-import { UserService } from '../../../services/user.service';
+import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
 
   password = {
     typePassword: 'password',
-    icon: 'pi pi-eye-slash'
+    icon: 'pi pi-eye'
   }
 
   err = {
@@ -77,11 +77,11 @@ export class RegisterComponent implements OnInit {
     if(this.password.typePassword === 'password'){
 
       this.password.typePassword = 'text';
-      this.password.icon = 'pi pi-eye';
+      this.password.icon = 'pi pi-eye-slash';
 
     }else{ 
       this.password.typePassword = 'password';
-      this.password.icon = 'pi pi-eye-slash';
+      this.password.icon = 'pi pi-eye';
     }
   }
 

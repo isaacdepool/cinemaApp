@@ -5,9 +5,13 @@ import { CommonModule } from '@angular/common';
 import {AvatarModule} from 'primeng/avatar';
 import {AvatarGroupModule} from 'primeng/avatargroup';
 import {ButtonModule} from 'primeng/button';
+import {CalendarModule} from 'primeng/calendar';
 import {InputTextModule} from 'primeng/inputtext';
+import {InputTextareaModule} from 'primeng/inputtextarea';
 import {MenubarModule} from 'primeng/menubar';
 import { SharedModule } from 'primeng/api';
+import {SkeletonModule} from 'primeng/skeleton';
+
 
 
 
@@ -20,9 +24,12 @@ import { SharedModule } from 'primeng/api';
     AvatarModule,
     AvatarGroupModule,
     ButtonModule,
+    CalendarModule,
     InputTextModule,
+    InputTextareaModule,
     MenubarModule,
-    SharedModule
+    SharedModule,
+    SkeletonModule
   ]
 })
 export class PrimeNgModule { }

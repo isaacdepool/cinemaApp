@@ -1,0 +1,58 @@
+<div class="title">
+    <span>ADMIN PANEL</span>
+</div>
+
+<div class="back">
+    
+
+    <form [formGroup]="myForm"
+    (ngSubmit)="login()"
+    autocomplete="off">
+    
+    <div class="row">
+    
+        <div class="col-12 mb-2">
+            <span class="p-float-label p-input-icon-left block">
+                <i class="pi pi-user"></i>
+                <input class="ip block" 
+                id="float-input" 
+                type="text" 
+                [ngClass]="myForm.pending? 'ng-invalid ng-dirty': ''"
+                formControlName="username"
+                pInputText> 
+                <label for="float-input">Username</label>
+            </span>
+        </div>
+    
+        <div class="col-12 mb-5">
+            <span class="p-float-label p-input-icon-left block">
+                <i (click)="eye()"
+                [class]="password.icon" 
+                class="eye"></i>
+
+                <input class="ip block" 
+                [type]="password.typePassword" 
+                formControlName="password"
+                [ngClass]="myForm.pending? 'ng-invalid ng-dirty': ''"
+                pInputText> 
+                <label for="float-input">Password</label>
+            </span>
+
+            <span *ngIf="myForm.pending"
+            class="mt-2 err">{{err.msg}}</span>
+        </div>
+
+    
+        <div class="col-12 mb-4">
+            <button pButton
+            [disabled]="myForm.invalid"
+            label="Login"
+            type="submit"
+            class="block p-button-rounded"
+            ></button>
+        </div>
+    </div>
+    
+    
+    </form>
+</div>

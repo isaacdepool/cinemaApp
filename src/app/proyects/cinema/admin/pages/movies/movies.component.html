@@ -1,0 +1,50 @@
+
+
+<div class="row mt-5 mb-5">
+
+    <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input (keyup)="search(box.value)"
+        #box
+        type="text" 
+        pInputText 
+        placeholder="Search" />
+    </span>
+
+    <ng-container *ngIf="moviesData.length > 0">
+        <div *ngFor="let movie of moviesData"
+        class="col-md-4 col-lg-3 col-6 mt-5 animated fadeIn">
+            <div class="card card-style">
+                <img 
+                [src]="movie.vertical_poster"  
+                class="card-img-top img-fluid" alt="...">
+    
+                <div class="card-body">
+                    <h5 class="card-title">{{movie.name}}</h5>
+                </div>
+                        <button (click)="info(movie.id)"
+                        pButton
+                        label="More info..."
+                        type="button"
+                        class="button-style 
+                        p-button-raised 
+                        p-button-rounded"></button>
+            </div>
+    
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="moviesData.length === 0">
+        <div *ngFor="let item of [1,1,1]"
+        class="col-md-4 col-lg-3 col-6 mt-5 animated fadeIn">
+            
+            <p-skeleton
+            class="card card-style"
+            height="300px">
+                
+            </p-skeleton>
+        </div>
+    </ng-container>
+    
+
+</div>
