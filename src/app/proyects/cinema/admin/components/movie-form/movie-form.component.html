@@ -1,0 +1,200 @@
+<form [formGroup]="myForm"
+autocomplete="off">
+    <div class="row">
+
+        <div class="col-sm-6 col-12 mb-2">
+            <span class="">
+                <label >Name</label>
+                <input class="ip block" 
+                id="float-input" 
+                type="text" 
+                [ngClass]="isValid('name')? 'ng-invalid ng-dirty': ''"
+                formControlName="name"
+                pInputText> 
+            </span>
+        </div>
+        <div class="col-sm-6 col-12 mb-2">
+            <span class="">
+                 
+                <label>Premiere</label>
+                <p-calendar class="ip block"
+                [ngClass]="isValid('premiere')? 'ng-invalid ng-dirty': ''"
+                formControlName="premiere"
+                [monthNavigator]="true" 
+                [yearNavigator]="true" 
+                yearRange="2000:2030"></p-calendar>
+            </span>
+
+        </div>
+        <div class="col-sm-6 col-12 mb-2">
+            <span class="">
+                <label >Duration (min)</label>
+                <input class="ip block" 
+                id="float-input" 
+                type="number" 
+                [ngClass]="isValid('duration')? 'ng-invalid ng-dirty': ''"
+                formControlName="duration"
+                pInputText> 
+            </span>
+        </div>
+        <div class="col-sm-6 col-12 mb-2">
+            <span class="">
+                <label >Genre</label>
+                <input class="ip block" 
+                type="text" 
+                [ngClass]="isValid('genre')? 'ng-invalid ng-dirty': ''"
+                formControlName="genre"
+                pInputText> 
+            </span>
+        </div>
+        <div class="col-sm-6 col-12 mb-2">
+            <span class="">
+                <label >Rating</label>
+
+                <select class=" block opt"
+                formControlName="rating"
+                [ngClass]="isValid('rating')? 'ng-invalid ng-dirty': ''"
+                (change)="rat($event)">
+
+                  <option disabled> Select a option</option>
+                  <option *ngFor="let item of rate"
+                  [value]="item">{{item}}</option>
+                  </select>
+            </span>
+        </div>
+        <div class="col-sm-6 col-12 mb-2">
+            <span class="">
+                <label >Role</label>
+
+                <select class=" block opt"
+                formControlName="role"
+                [ngClass]="isValid('role')? 'ng-invalid ng-dirty': ''"
+                (change)="rol($event)">
+
+                  <option disabled> Select a option</option>
+                  <option *ngFor="let item of role"
+                  [value]="item">{{item}}</option>
+                  </select>
+            </span>
+        </div>
+        <div class="col-sm-6 col-12 mb-2">
+            <span class="">
+                <label >Synopsis</label>
+                <textarea class="ip block" 
+                pInputTextarea 
+                type="text" 
+                [rows]="3"
+                [ngClass]="isValid('synopsis')? 'ng-invalid ng-dirty': ''"
+                formControlName="synopsis"></textarea>
+            </span>
+        </div>
+        <div class="col-sm-6 col-12 mb-2">
+            <span class="">
+                <label >Directors</label>
+                <textarea class="ip block" 
+                pInputTextarea 
+                type="text" 
+                [rows]="3"
+                [ngClass]="isValid('directors')? 'ng-invalid ng-dirty': ''"
+                formControlName="directors"></textarea>
+            </span>
+        </div>
+        <div class="col-sm-6 col-12 mb-2">
+            <span class="">
+                <label >Actors</label>
+                <textarea class="ip block" 
+                pInputTextarea 
+                type="text" 
+                [rows]="3"
+                [ngClass]="isValid('actors')? 'ng-invalid ng-dirty': ''"
+                formControlName="actors"></textarea>
+            </span>
+        </div>
+        <div class="col-sm-6 col-12 mb-2">
+            <span class="">
+                <label >Vertical Poster</label>
+                <textarea class="ip block" 
+                pInputTextarea 
+                type="text" 
+                [rows]="3"
+                [ngClass]="isValid('vertical_poster')? 'ng-invalid ng-dirty': ''"
+                formControlName="vertical_poster"></textarea>
+            </span>
+        </div>
+        <div class="col-sm-6 col-12 mb-2">
+            <span class="">
+                <label >Horizontal Poster</label>
+                <textarea class="ip block" 
+                pInputTextarea 
+                [rows]="3"
+                [ngClass]="isValid('horizontal_poster')? 'ng-invalid ng-dirty': ''"
+                formControlName="horizontal_poster"></textarea>
+            </span>
+        </div>
+
+    </div>
+
+    <div *ngIf="movieData"
+    class="row">
+
+        <ng-container *ngIf="isEdit">
+            <div class="col-md-6 col-sm-12 mt-2">
+                <button *ngIf="isEdit"
+                [disabled]="myForm.invalid"
+                type="submit"
+                (click)="save()"
+                (click)="edit( isEdit = !isEdit )"
+                pButton
+                icon="pi pi-pencil"
+                label="Save"
+                class="p-button-rounded block"></button>
+            </div>
+        </ng-container>
+    
+        <ng-container *ngIf="isEdit">
+            <div class="col-md-6 col-sm-12 mt-2">
+                <button *ngIf="isEdit"
+                (click)="edit( isEdit = !isEdit )"
+                pButton
+                icon="pi pi-pencil"
+                label="Cancel"
+                class="p-button-rounded block delete"></button>
+            </div>
+        </ng-container>
+    
+        <ng-container *ngIf="!isEdit">
+    
+            <div class="col-md-6 col-sm-12 mt-2">
+                <button
+                (click)="edit( isEdit = !isEdit )"
+                pButton
+                icon="pi pi-pencil"
+                label="Edit"
+                class="p-button-rounded block edit"></button>
+            </div>
+        </ng-container>
+    
+        <ng-container *ngIf="!isEdit">
+            <div class="col-md-6 col-sm-12 mt-2">
+                <button *ngIf="!isEdit"
+                (click)="delete()"
+                pButton
+                icon="pi pi-pencil"
+                label="Delete"
+                class="p-button-rounded block delete"></button>
+            </div>
+        </ng-container>
+    </div>
+    
+    <div *ngIf="!movieData">
+            <div class="col-12 mt-2 mb-5">
+                <button [disabled]="myForm.invalid"
+                type="submit"
+                (click)="save()"
+                pButton
+                icon="pi pi-pencil"
+                label="Save"
+                class="p-button-rounded block"></button>
+            </div>
+    </div>
+</form>

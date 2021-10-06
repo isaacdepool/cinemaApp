@@ -23,7 +23,7 @@ export class MenubarComponent implements OnInit {
         {
           label: 'Add Movie',
           icon: 'pi pi-plus',
-          routerLink: './movie/add'
+          routerLink: './add-movie'
         },
         {
           label: 'View Movies',
@@ -37,12 +37,12 @@ export class MenubarComponent implements OnInit {
             {
               label: 'Add Show',
               icon: 'pi pi-plus',
-              routerLink: './'
+              routerLink: './add-shows'
             },
             {
               label: 'View Shows',
               icon: 'pi pi-list',
-              routerLink: './'
+              routerLink: './shows'
             },
           ]
         },
@@ -51,11 +51,11 @@ export class MenubarComponent implements OnInit {
       {
         label: 'Rooms',
         icon: 'pi pi-th-large',
-        items: [
+        items: [ 
         {
           label: 'Add Room',
           icon: 'pi pi-plus',
-          routerLink: './room/add'
+          routerLink: './add-room'
         },
         {
           label: 'View Rooms',

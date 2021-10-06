@@ -27,3 +27,36 @@ export interface Movie{
     status: boolean
 }
 
+export interface CrudRoom{
+    ok: boolean,
+    msg: string,
+    roomData: Room,
+    roomsData: Room[]
+}
+
+export interface Room{
+    id: number,
+    name: string,
+    rows: number,
+    seats: number,
+    status: boolean
+}
+
+export interface CrudShow{
+    ok: boolean,
+    msg: string,
+    movieShow: Show,
+    movieShows: Show[]
+}
+
+export interface Show{
+    id: number,
+    price: number,
+    start_time: string,
+    end_time: string,
+    day: string,
+    status: boolean,
+    id_room: number,
+    id_movie: number
+}
+

@@ -5,7 +5,7 @@
 <div class="row">
     <ng-container *ngIf="movies.length > 0">
         <div *ngFor="let movie of movies"
-        class="col-md-4 col-lg-3 col-6 mt-5">
+        class="col-md-4 col-lg-3 col-6 mt-5"> 
             <div class="card card-style animated fadeIn">
                 <img (click)="redirecTo( movie )"
                 [src]="movie.vertical_poster" 

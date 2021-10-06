@@ -1,0 +1,36 @@
+
+.block{
+    width: 100%;
+}
+
+.p-calendar .p-inputtext {
+    flex: 1 1 auto;
+    width: 100% !important;
+}
+
+p-calendar{
+    display: block !important;
+}
+
+.opt {
+    background: #333;
+    height: 3rem;
+    border-radius: 5px;
+    color: white;
+}
+
+.opt:disabled {
+    opacity: 0.38;
+}
+
+.delete{
+    background: rgb(206, 43, 43);
+}
+
+.delete:focus{
+    background: rgb(165, 36, 36);
+}
+
+.delete:hover{
+    background: rgb(165, 36, 36);
+}

@@ -1,0 +1,75 @@
+
+
+<form [formGroup]="myForm"
+autocomplete="off">
+
+    <div class="col-12 mb-2">
+        <span class="">
+            <label >Name</label>
+            <input class="ip block" 
+            id="float-input" 
+            type="text" 
+            [ngClass]="isValid('name')? 'ng-invalid ng-dirty': ''"
+            formControlName="name"
+            pInputText> 
+        </span>
+    </div>
+
+    <div class="col-12 mb-2">
+        <span class="">
+            <label >Rows</label>
+            <input class="ip block" 
+            id="float-input" 
+            type="number" 
+            [ngClass]="isValid('rows')? 'ng-invalid ng-dirty': ''"
+            formControlName="rows"
+            pInputText> 
+        </span>
+    </div>
+
+    <div class="col-12 mb-2">
+        <span class="">
+            <label >Seats</label>
+            <input class="ip block" 
+            id="float-input" 
+            type="number" 
+            [ngClass]="isValid('seats')? 'ng-invalid ng-dirty': ''"
+            formControlName="seats"
+            pInputText> 
+        </span>
+    </div>
+
+    <div class="col-12 mb-2 err">
+        <span [ngClass]="isValid('name')? 'view': 'hidden'">
+            * Name is necessary</span>
+        <span [ngClass]="isValid('rows')? 'view': 'hidden'">
+            * Rows is necessary</span>
+        <span [ngClass]="isValid('seats')? 'view': 'hidden'">
+            * The number of Seats must be equal or greater to the Rows</span>
+        <span [ngClass]="isValid('seats')? 'view': 'hidden'">
+            * The number of Seats must be equal or greater to the Rows</span>
+        <span *ngIf="err.ok">
+            * {{err.msg}}</span>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-12 col-md-6 mt-2" >
+            <button [disabled]="myForm.invalid"
+            type="submit"
+            (click)="save()"
+            pButton
+            icon="pi pi-pencil"
+            label="Save"
+            class="p-button-rounded block"></button>
+        </div>
+        <div class="col-12 col-md-6 mt-2">
+            <button [disabled]="myForm.invalid"
+            type="submit"
+            (click)="delete()"
+            pButton
+            icon="pi pi-pencil"
+            label="Delete"
+            class="p-button-rounded block delete"></button>
+        </div>
+</div>
+</form>

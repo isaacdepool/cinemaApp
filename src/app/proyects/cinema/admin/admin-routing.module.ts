@@ -9,6 +9,11 @@ import { PurchasesComponent } from './pages/purchases/purchases.component';
 import { UsersComponent } from './pages/users/users.component';
 import { ValidarTokenGuard } from './guards/validar-token.guard';
 import { ValidateTypeGuard } from './guards/validate-type.guard';
+import { AddMovieComponent } from './pages/add-movie/add-movie.component';
+import { AddRoomComponent } from './pages/add-room/add-room.component';
+import { ShowsComponent } from './pages/shows/shows.component';
+import { MovieShowComponent } from './pages/movie-show/movie-show.component';
+import { AddShowComponent } from './pages/add-show/add-show.component';
 
 const routes: Routes = [
   {
@@ -19,6 +24,9 @@ const routes: Routes = [
     path: '', 
     component: HomeComponent,
     children: [
+      {
+        path: 'add-movie', component: AddMovieComponent
+      },
       {
         path: 'movie/:id', component: MovieComponent
       },
@@ -32,13 +40,19 @@ const routes: Routes = [
         path: 'rooms', component: RoomsComponent
       },
       {
+        path: 'add-room', component: AddRoomComponent
+      },
+      {
         path: 'purchases', component: PurchasesComponent
       },
       {
-        path: 'movie-shows', component: PurchasesComponent
+        path: 'movie-show/:id', component: MovieShowComponent
       },
       {
-        path: 'shows', component: PurchasesComponent
+        path: 'add-shows', component: AddShowComponent
+      },
+      {
+        path: 'shows', component: ShowsComponent
       },
       {
         path: 'users', component: UsersComponent,

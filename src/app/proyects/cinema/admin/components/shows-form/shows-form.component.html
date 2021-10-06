@@ -1,0 +1,116 @@
+<form [formGroup]="myForm"
+autocomplete="off">
+
+    <div class="col-12 mb-2">
+        <span class="">
+            <label >Price ($USD)</label>
+            <input class="ip block" 
+            id="float-input" 
+            type="number" 
+            formControlName="price"
+            pInputText> 
+        </span>
+    </div>
+
+    <div class="col-12 mb-2">
+        <span class="">
+            <label >Start</label>
+            <input class="ip block" 
+            id="float-input" 
+            type="text" 
+            formControlName="start_time"
+            pInputText> 
+        </span>
+    </div>
+
+    <div class="col-12 mb-2">
+        <span class="">
+            <label >End</label>
+            <input class="ip block" 
+            id="float-input" 
+            type="text"
+            formControlName="end_time"
+            pInputText> 
+        </span>
+    </div>
+
+    <div class="col-12 mb-2">
+        
+        <span class="">
+                 
+            <label>Day</label>
+            <p-calendar class="ip block"
+            formControlName="day"
+            [monthNavigator]="true" 
+            [yearNavigator]="true" 
+            yearRange="2000:2030"></p-calendar>
+        </span>
+
+    </div>
+
+    <div class="col-sm-6 col-12 mb-2">
+        <span class="">
+            <label >Movie</label>
+
+            <select class=" block opt"
+            formControlName="id_movie"
+            (change)="movie($event)">
+
+              <option disabled> Select a option</option>
+              <option *ngFor="let item of moviesData"
+              [value]="item.id">{{item.name}}</option>
+              </select>
+        </span>
+    </div>
+
+    <div class="col-sm-6 col-12 mb-2">
+        <span class="">
+            <label >Room</label>
+
+            <select class=" block opt"
+            formControlName="id_room"
+            (change)="room($event)">
+
+              <option disabled> Select a option</option>
+              <option *ngFor="let item of roomsData"
+              [value]="item.id">{{item.name}}</option>
+              </select>
+        </span>
+    </div>
+
+    <!-- <div class="col-12 mb-2 err">
+        <span [ngClass]="isValid('name')? 'view': 'hidden'">
+            * Name is necessary</span>
+        <span [ngClass]="isValid('rows')? 'view': 'hidden'">
+            * Rows is necessary</span>
+        <span [ngClass]="isValid('seats')? 'view': 'hidden'">
+            * The number of Seats must be equal or greater to the Rows</span>
+        <span [ngClass]="isValid('seats')? 'view': 'hidden'">
+            * The number of Seats must be equal or greater to the Rows</span>
+        <span *ngIf="err.ok">
+            * {{err.msg}}</span>
+    </div> -->
+
+    <div class="row mb-5">
+        <div class="col-12 mt-2" >
+            <button [disabled]="myForm.invalid"
+            type="submit"
+            (click)="save()"
+            pButton
+            icon="pi pi-pencil"
+            label="Save"
+            class="p-button-rounded block"></button>
+        </div>
+
+        <div *ngIf="showData"
+        class="col-12 mt-2">
+            <button 
+            type="submit"
+            (click)="delete()"
+            pButton
+            icon="pi pi-pencil"
+            label="Delete"
+            class="p-button-rounded block delete"></button>
+        </div>
+</div>
+</form>

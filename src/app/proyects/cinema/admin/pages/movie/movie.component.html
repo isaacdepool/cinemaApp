@@ -1,163 +1,33 @@
 
 <div *ngIf="movieData"
 class="row mt-5">
-    <div class="col-lg-4 col-12 animated fadeIn fast">
-        <img class="card-img-top img-fluid v-p"
-        [src]="movieData.vertical_poster" 
-        [alt]="movieData.name">
-
-        <img class="card-img-top img-fluid h-p"
-        [src]="movieData.horizontal_poster" 
-        [alt]="movieData.name">
+    <div class="col-12 animated fadeIn fast">
 
         <div class="row">
-            <div class="col-6 col-lg-12 mt-2">
-                <button
-                pButton
-                icon="pi pi-pencil"
-                label="Edit"
-                class="p-button-rounded block edit"></button>
+            <div class="col-6">
+                <img class="card-img-top img-fluid"
+                [src]="movieData.vertical_poster" 
+                [alt]="movieData.name">
             </div>
 
-            <div class="col-6 col-lg-12 mt-2">
-                <button
-                pButton
-                icon="pi pi-trash"
-                label="delete"
-                class="p-button-rounded block delete"></button>
+            <div class="col-6">
+                <img class="card-img-top img-fluid"
+                [src]="movieData.horizontal_poster" 
+                [alt]="movieData.name">
             </div>
         </div>
-    </div>
 
-    <div class="col-lg-8 mt-2">
+        <div class="row mb-4">
 
-        <h2>{{movieData.name |titlecase}}</h2>
+            <div class="col-12 mt-2">
 
-        <form [formGroup]="myForm">
-            <div class="row">
+                <h2>{{movieData.name |titlecase}}</h2>
         
-                <div class="col-6 mb-2">
-                    <span class="">
-                        <label >Name</label>
-                        <input class="ip block" 
-                        id="float-input" 
-                        type="text" 
-                        [ngClass]="myForm.pending? 'ng-invalid ng-dirty': ''"
-                        formControlName="name"
-                        pInputText> 
-                    </span>
-                </div>
-                <div class="col-6 mb-2">
-                    <span class="">
-                         
-                        <label>Premiere</label>
-                        <p-calendar class="ip block"
-                        formControlName="premiere"
-                        [monthNavigator]="true" 
-                        [yearNavigator]="true" 
-                        yearRange="2000:2030"></p-calendar>
-                    </span>
-
-                </div>
-                <div class="col-6 mb-2">
-                    <span class="">
-                        <label >Duration</label>
-                        <input class="ip block" 
-                        id="float-input" 
-                        type="number" 
-                        [ngClass]="myForm.pending? 'ng-invalid ng-dirty': ''"
-                        formControlName="duration"
-                        pInputText> 
-                    </span>
-                </div>
-                <div class="col-6 mb-2">
-                    <span class="">
-                        <label >Genre</label>
-                        <input class="ip block" 
-                        id="float-input" 
-                        type="text" 
-                        [ngClass]="myForm.pending? 'ng-invalid ng-dirty': ''"
-                        formControlName="genre"
-                        pInputText> 
-                    </span>
-                </div>
-                <div class="col-6 mb-2">
-                    <span class="">
-                        <label >Rating</label>
-                        <input class="ip block" 
-                        id="float-input" 
-                        type="text" 
-                        [ngClass]="myForm.pending? 'ng-invalid ng-dirty': ''"
-                        formControlName="rating"
-                        pInputText> 
-                    </span>
-                </div>
-                <div class="col-6 mb-2">
-                    <span class="">
-                        <label >Role</label>
-                        <input class="ip block" 
-                        id="float-input" 
-                        type="text" 
-                        [ngClass]="myForm.pending? 'ng-invalid ng-dirty': ''"
-                        formControlName="role"
-                        pInputText> 
-                    </span>
-                </div>
-                <div class="col-6 mb-2">
-                    <span class="">
-                        <label >Synopsis</label>
-                        <textarea class="ip block" 
-                        pInputTextarea 
-                        type="text" 
-                        [rows]="3"
-                        [ngClass]="myForm.pending? 'ng-invalid ng-dirty': ''"
-                        formControlName="synopsis"></textarea>
-                    </span>
-                </div>
-                <div class="col-6 mb-2">
-                    <span class="">
-                        <label >Directors</label>
-                        <textarea class="ip block" 
-                        pInputTextarea 
-                        type="text" 
-                        [rows]="3"
-                        [ngClass]="myForm.pending? 'ng-invalid ng-dirty': ''"
-                        formControlName="directors"></textarea>
-                    </span>
-                </div>
-                <div class="col-6 mb-2">
-                    <span class="">
-                        <label >Actors</label>
-                        <textarea class="ip block" 
-                        pInputTextarea 
-                        type="text" 
-                        [rows]="3"
-                        [ngClass]="myForm.pending? 'ng-invalid ng-dirty': ''"
-                        formControlName="actors"></textarea>
-                    </span>
-                </div>
-                <div class="col-6 mb-2">
-                    <span class="">
-                        <label >Vertical Poster</label>
-                        <textarea class="ip block" 
-                        pInputTextarea 
-                        type="text" 
-                        [rows]="3"
-                        [ngClass]="myForm.pending? 'ng-invalid ng-dirty': ''"
-                        formControlName="vertical_poster"></textarea>
-                    </span>
-                </div>
-                <div class="col-6 mb-2">
-                    <span class="">
-                        <label >Horizontal Poster</label>
-                        <textarea class="ip block" 
-                        pInputTextarea 
-                        [rows]="3"
-                        [ngClass]="myForm.pending? 'ng-invalid ng-dirty': ''"
-                        formControlName="horizontal_poster"></textarea>
-                    </span>
-                </div>
+                <app-movie-form [movieData]="movieData">
+                    
+                </app-movie-form>
             </div>
-        </form>
+            
+        </div>
     </div>
 </div>

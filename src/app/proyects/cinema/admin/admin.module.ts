@@ -15,6 +15,12 @@ import { PrimeNgModule } from '../../../prime-ng/prime-ng.module';
 import { MovieShowComponent } from './pages/movie-show/movie-show.component';
 import { ShowsComponent } from './pages/shows/shows.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddMovieComponent } from './pages/add-movie/add-movie.component';
+import { MovieFormComponent } from './components/movie-form/movie-form.component';
+import { RoomFormComponent } from './components/room-form/room-form.component';
+import { AddRoomComponent } from './pages/add-room/add-room.component';
+import { ShowsFormComponent } from './components/shows-form/shows-form.component';
+import { AddShowComponent } from './pages/add-show/add-show.component';
 
 
 @NgModule({
@@ -29,7 +35,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MenubarComponent, 
     FooterComponent, 
     MovieShowComponent, 
-    ShowsComponent
+    ShowsComponent, 
+    AddMovieComponent, 
+    MovieFormComponent, 
+    RoomFormComponent, 
+    AddRoomComponent, 
+    ShowsFormComponent,
+    AddShowComponent
   ],
   imports: [
     CommonModule,

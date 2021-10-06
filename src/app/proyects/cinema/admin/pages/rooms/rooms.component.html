@@ -1,1 +1,29 @@
-<p>rooms works!</p>
+
+<div class="row mt-5">
+    <div class="col">
+
+        <table class="table table-dark table-striped table-responsive">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Name</th>
+                <th scope="col">Rows</th>
+                <th scope="col">Seats</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let room of rooms">
+                <th ></th>
+                <th scope="row">{{room.name |uppercase}}</th>
+                <td>{{room.rows}}</td>
+                <td>{{room.seats}}</td>
+                <td>
+                    <a [routerLink]="['../room', room.id]">Edit</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+    </div>
+</div>

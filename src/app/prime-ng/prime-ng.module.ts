@@ -6,11 +6,13 @@ import {AvatarModule} from 'primeng/avatar';
 import {AvatarGroupModule} from 'primeng/avatargroup';
 import {ButtonModule} from 'primeng/button';
 import {CalendarModule} from 'primeng/calendar';
+import {CascadeSelectModule} from 'primeng/cascadeselect';
 import {InputTextModule} from 'primeng/inputtext';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {MenubarModule} from 'primeng/menubar';
 import { SharedModule } from 'primeng/api';
 import {SkeletonModule} from 'primeng/skeleton';
+
 
 
 
@@ -25,6 +27,7 @@ import {SkeletonModule} from 'primeng/skeleton';
     AvatarGroupModule,
     ButtonModule,
     CalendarModule,
+    CascadeSelectModule,
     InputTextModule,
     InputTextareaModule,
     MenubarModule,

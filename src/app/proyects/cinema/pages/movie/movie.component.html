@@ -1,12 +1,12 @@
 
 <ng-container *ngIf="isData">
 
-    <div class="poster"
+    <div class="poster animated fadeIn fast"
     [ngStyle]="{'background-image': 'url(\''+movieData.horizontal_poster+'\')'}">
         
     </div>
     
-    <div class="container mt-5 mb-5 content">
+    <div class="container mt-5 mb-5 content animated fadeIn">
         <h3>{{ movieData.name }}</h3>
         <span>Directors: {{ movieData.directors }}</span>
         
@@ -17,7 +17,7 @@
                 (click)="calendar()"
                 [ngClass]="{'btn-act': isCalendar}"
                 class="btn-style btn btn-outline-primary btn-block">
-                    Horarios
+                    Hours
                 </button>
             </div>
     

@@ -15,12 +15,11 @@
         <div *ngFor="let movie of moviesData"
         class="col-md-4 col-lg-3 col-6 mt-5 animated fadeIn">
             <div class="card card-style">
-                <img 
-                [src]="movie.vertical_poster"  
+                <img [src]="movie.vertical_poster"  
                 class="card-img-top img-fluid" alt="...">
     
                 <div class="card-body">
-                    <h5 class="card-title">{{movie.name}}</h5>
+                    <h5 class="card-title">{{movie.name |titlecase}}</h5>
                 </div>
                         <button (click)="info(movie.id)"
                         pButton

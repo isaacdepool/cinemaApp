@@ -24,7 +24,7 @@ export class ComingSoonComponent implements OnInit {
   getComingSoon( movies: Movie[] ){
 
     if(movies.length > 0){
- 
+  
       for (const movie of movies) {
 
         if(movie.role === 'COMING-SOON'){

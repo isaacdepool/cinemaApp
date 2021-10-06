@@ -1,0 +1,31 @@
+
+.block{
+    width: 100%;
+}
+
+.err{
+    color: rgb(223, 32, 32);
+    display: grid;
+}
+
+.view{
+
+    display: inherit;
+}
+
+.hidden{
+
+    display: none;
+}
+
+.delete{
+    background: rgb(206, 43, 43);
+}
+
+.delete:focus{
+    background: rgb(165, 36, 36);
+}
+
+.delete:hover{
+    background: rgb(165, 36, 36);
+}
