@@ -44,8 +44,8 @@ export class ShowService {
 
     return this.http.post<CrudShow>(url, body)
       .pipe(
-        map( resp => resp.ok ),
-        catchError( err => of(err.error.msg))
+        map( resp => resp ),
+        catchError( err => of(err.error))
       )
   }
 

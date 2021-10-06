@@ -20,8 +20,8 @@
                 <th scope="row">{{movies[i]}}</th>
                 <td>{{show.price}} $</td>
                 <td>{{show.day}}</td>
-                <td>{{show.start_time}}</td>
-                <td>{{show.end_time}}</td>
+                <td>{{show.start_time | hour}}</td>
+                <td>{{show.end_time | hour}}</td>
                 <td>{{rooms[i] | uppercase}}</td>
                 <td>
                     <a [routerLink]="['../movie-show', show.id]">Edit</a>

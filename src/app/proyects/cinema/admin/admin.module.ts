@@ -21,6 +21,7 @@ import { RoomFormComponent } from './components/room-form/room-form.component';
 import { AddRoomComponent } from './pages/add-room/add-room.component';
 import { ShowsFormComponent } from './components/shows-form/shows-form.component';
 import { AddShowComponent } from './pages/add-show/add-show.component';
+import { HourPipe } from './pipes/hour.pipe';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { AddShowComponent } from './pages/add-show/add-show.component';
     RoomFormComponent, 
     AddRoomComponent, 
     ShowsFormComponent,
-    AddShowComponent
+    AddShowComponent,
+    HourPipe
   ],
   imports: [
     CommonModule,

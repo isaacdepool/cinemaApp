@@ -5,6 +5,7 @@ import { MovieService } from '../../../services/movie.service';
 import { RoomService } from '../../../services/room.service';
 import { ShowService } from '../../../services/show.service';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-shows-form',
@@ -17,6 +18,8 @@ export class ShowsFormComponent implements OnInit {
   roomsData!: Room[];
 
   @Input() showData!: Show;
+
+  ok: boolean = false;
 
   myForm: FormGroup = this.fb.group({
     price: [, [Validators.required, Validators.min(1)]],
@@ -71,24 +74,36 @@ export class ShowsFormComponent implements OnInit {
       this.roomSvc.getRooms()
         .subscribe( resp =>{
           this.roomsData = resp.roomsData || [];
-        })
+        });
   }
 
   save(){
+
+   this.moment();
+   
+   if(this.ok == true){
+
+     const { price, start_time, end_time, day, id_room, id_movie } = this.myForm.value; 
+      this.showSvc.saveShow( price, start_time, end_time, day, id_room, id_movie )
+        .subscribe( resp =>{ 
+  
+          if(resp.ok){
+  
+            this.router.navigateByUrl('/proyects/cinema/admin/shows');
+            alert('Show has been saved!');
+  
+          }else{ 
+            alert(resp.msg);
+          }
+        });
+
+   }else{
+
+      this.myForm.controls['start_time'].reset();
+      this.myForm.controls['end_time'].reset();
+      alert('Start has to be greater than the end');
+   }
     
-   const { price, start_time, end_time, day, id_room, id_movie } = this.myForm.value; 
-    this.showSvc.saveShow( price, start_time, end_time, day, id_room, id_movie )
-      .subscribe( ok =>{ 
-
-        if(ok){
-
-          this.router.navigateByUrl('/proyects/cinema/admin/shows');
-          alert('Show has been saved!');
-
-        }else{
-          alert(ok);
-        }
-      })
   }
 
   delete(){
@@ -107,11 +122,24 @@ export class ShowsFormComponent implements OnInit {
       })
   }
 
+  moment(){
+
+     var start = moment(this.myForm.value.start_time).format('HH:mm');
+     var end = moment(this.myForm.value.end_time).format('HH:mm');
+
+     if(start < end){
+      this.ok = true;
+     }else{
+       this.ok = false;
+     }
+  }
+
   formData(data:Show){
 
     this.myForm.reset({
-      start_time: data.start_time,
-      end_time: data.end_time,
+      price: data.price,
+      start_time: moment(data.start_time).format('HH:mm'),
+      end_time: moment(data.end_time).format('HH:mm'),
       day: new Date(data.day),
       id_room: data.id_room,
       id_movie: data.id_movie

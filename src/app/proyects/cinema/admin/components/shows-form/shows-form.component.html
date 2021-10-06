@@ -11,29 +11,7 @@ autocomplete="off">
             pInputText> 
         </span>
     </div>
-
-    <div class="col-12 mb-2">
-        <span class="">
-            <label >Start</label>
-            <input class="ip block" 
-            id="float-input" 
-            type="text" 
-            formControlName="start_time"
-            pInputText> 
-        </span>
-    </div>
-
-    <div class="col-12 mb-2">
-        <span class="">
-            <label >End</label>
-            <input class="ip block" 
-            id="float-input" 
-            type="text"
-            formControlName="end_time"
-            pInputText> 
-        </span>
-    </div>
-
+ 
     <div class="col-12 mb-2">
         
         <span class="">
@@ -43,10 +21,31 @@ autocomplete="off">
             formControlName="day"
             [monthNavigator]="true" 
             [yearNavigator]="true" 
-            yearRange="2000:2030"></p-calendar>
+            yearRange="2021:2050"></p-calendar>
         </span>
 
     </div>
+
+    <div class="col-12 mb-2">
+        <span class="">
+            <label for="timeonly">Start</label>
+            <p-calendar  
+            formControlName="start_time"
+            [timeOnly]="true" 
+            inputId="timeonly"></p-calendar>
+        </span>
+    </div>
+
+    <div class="col-12 mb-2">
+            <span class="">
+                <label for="timeonly">End</label>
+                <p-calendar  
+                formControlName="end_time"
+                [timeOnly]="true" 
+                inputId="timeonly"></p-calendar>
+            </span>
+    </div>
+
 
     <div class="col-sm-6 col-12 mb-2">
         <span class="">
