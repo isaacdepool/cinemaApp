@@ -14,6 +14,8 @@ import { CentralPageComponent } from './pages/central-page/central-page.componen
 import { MovieComponent } from './pages/movie/movie.component';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
 import { AuthModule } from './auth/auth.module';
+import { HourPipe } from './pipes/hour.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -27,13 +29,18 @@ import { AuthModule } from './auth/auth.module';
     CentralPageComponent,
     MovieComponent,
     MovieCardComponent,
+    HourPipe
+  ],
+  exports:[
+    HourPipe
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     CinemaRoutingModule,
     PrimeNgModule,
     SharedModule,
-    AuthModule
+    AuthModule,
   ]
 })
 export class CinemaModule { }

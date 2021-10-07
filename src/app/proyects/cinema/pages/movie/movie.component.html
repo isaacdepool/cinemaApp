@@ -32,52 +32,56 @@
     
         <div class="row mt-5 ms-3 me-3">
         
+        <!-- is no-show  -->
+        <div *ngIf="!isShow && isCalendar">
+            <h4>Sorry, this movie dosen`t have a show :(</h4>
+            <hr>
+        </div>
+
         <!-- Calendar -->
-        <div *ngIf="isCalendar && movieData.role != 'COMING-SOON'"
+        <div *ngIf="isCalendar && movieData.role != 'COMING-SOON' && isShow"
         class="col-12">
             <h4>Select a movie show</h4>
     
             <hr>
-            <h4>Shows</h4>
+
+            <h4 >Select Day</h4>
+        
+                <span class="">
+                        
+                    <select class="block opt mb-4"
+                    (change)="h($event.target)">
+
+                    <option disabled> Select a option</option>
+                    <option *ngFor="let item of showDays"
+                    [value]="item">{{item}}</option>
+                    </select>
+
+                </span>
+
+            <ng-container *ngIf="ok">
+                
+                <h4>Shows</h4>
+        
+                    <p class="mt-3">Traditional - 2D Esp</p>
     
-            <p class="mt-3">Traditional - 2D Esp</p>
-            <button (click)="selectHour()"
-            pButton
-            label="15:30"
-            type="button"
-            [icon]="iconHour"
-            class="p-button-raised 
-            p-button-rounded p-button-outlined
-            p-button-info"></button>
-    
-            <p class="mt-3">Traditional - 2D Sub</p>
-            <button (click)="selectHour()"
-            pButton
-            label="15:30"
-            type="button"
-            [icon]="iconHour"
-            class="p-button-raised 
-            p-button-rounded p-button-outlined
-            p-button-info"></button>
-    
-            <!-- <div class="form-check radio">
-                <input class="form-check-input" 
-                type="radio" 
-                name="flexRadioDefault" 
-                id="flexRadioDefault1">
-    
-                <label class="form-check-label" 
-                for="flexRadioDefault1">
-                  15:30
-                </label>
-            </div> -->
-    
-            <hr>
-            <div class="btn-buy d-grid gap-2">
-                <button class=" btn btn-outline-info">
-                    Buy tickets
-                </button>
-            </div>
+            <form [formGroup]="myForm"
+                autocomplete="off"> 
+
+                    <p-selectButton [options]="showHours" 
+                    formControlName="id"
+                    (onChange)="selectShow($event.target)"
+                    optionLabel="start_time"
+                    class="p-button-rounded">
+
+                        <ng-template let-item>
+                            <span>{{item.start_time | hour}}</span>
+                        </ng-template>
+                    </p-selectButton>
+                <hr>
+            </form>
+                
+            </ng-container>
         </div>
     
         <!-- Synopsis -->

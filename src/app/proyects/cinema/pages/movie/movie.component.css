@@ -32,6 +32,17 @@ button:focus:not(:focus-visible) {
     box-shadow: unset;
 }
 
+.opt {
+    background: #333;
+    height: 3rem;
+    border-radius: 5px;
+    color: white;
+}
+
+.opt:disabled {
+    opacity: 0.38;
+}
+
 
 .btn-style-r{
     padding-left: 0;

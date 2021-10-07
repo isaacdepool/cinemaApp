@@ -10,7 +10,8 @@ import {CascadeSelectModule} from 'primeng/cascadeselect';
 import {InputTextModule} from 'primeng/inputtext';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {MenubarModule} from 'primeng/menubar';
-import { SharedModule } from 'primeng/api';
+import {SelectButtonModule} from 'primeng/selectbutton';
+import {SharedModule} from 'primeng/api';
 import {SkeletonModule} from 'primeng/skeleton';
 
 
@@ -31,6 +32,7 @@ import {SkeletonModule} from 'primeng/skeleton';
     InputTextModule,
     InputTextareaModule,
     MenubarModule,
+    SelectButtonModule,
     SharedModule,
     SkeletonModule
   ]
