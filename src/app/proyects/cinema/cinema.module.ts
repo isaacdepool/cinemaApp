@@ -16,6 +16,7 @@ import { MovieCardComponent } from './components/movie-card/movie-card.component
 import { AuthModule } from './auth/auth.module';
 import { HourPipe } from './pipes/hour.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ShowComponent } from './pages/show/show.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CentralPageComponent,
     MovieComponent,
     MovieCardComponent,
+    ShowComponent,
     HourPipe
   ],
   exports:[

@@ -1,0 +1,123 @@
+
+<div class="page">
+
+    <div class="mt-5 container">
+    
+        <div class="title">
+            <h3>Select your(s) seat(s)</h3>
+            <span>To change your assigned place click on the seat</span>
+        </div>
+    
+        <div class="container legend mt-4 mb-4">
+        
+                <div class="seat">
+                    <img class="seats selected me-3" src="../../../../../assets/img/seat.png">
+                    <span>Selected</span>
+                </div>
+        
+                <div class="seat">
+                    <img class="seats busy me-3 ms-3" src="../../../../../assets/img/seat.png">
+                    <span>Busy</span>
+                </div>
+        
+                <div class="seat">
+                    <img class="seats free me-3 ms-3" src="../../../../../assets/img/seat.png">
+                    <span>Free</span>
+                </div>
+        </div>
+    
+        <div class="screen">
+    
+        </div>
+        
+        <div class="table-responsive">
+            <table *ngIf="roomData"
+             class="tab ">
+              <tbody>
+                 <tr *ngFor="let item of column let i = index">
+            
+                   <th *ngIf="i < roomData.rows"
+                   >{{column[i]}}</th>
+            
+                   <ng-container *ngFor="let item of seats let j = index">
+        
+                       <td *ngIf="i <= roomData.rows -1">
+                           <span class="number">{{j+1}}</span>
+                           <img class="seats st"
+                           [ngClass]="isBusy(column[i]+(j+1))? 'busy': '' || isSelected(column[i]+(j+1))? 'selected': ''"
+                           (click)="onClick(column[i]+(j+1))"
+                           src="../../../../../assets/img/seat.png">
+                       </td>
+                       
+                    </ng-container>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+<div *ngIf="movieData && showData && roomData"
+class="back pb-3">
+
+    <div class="summary mt-5">
+    
+        <h4 class="pt-3">Purchase summary</h4>
+        <hr>
+    
+        <div class="movie">
+    
+            <img class="img-movie me-3"
+            [src]="movieData.vertical_poster"
+            [alt]="movieData.name">
+    
+            <div class="movieData">
+                <p>
+                    <span class="blue bold">Title: </span>
+                    {{movieData.name | titlecase}}
+                </p>
+                <p>
+                    <span class="blue bold">Date: </span>
+                    {{showData.day}}
+                </p>
+                <p>
+                    <span class="blue bold">Show: </span>
+                    {{showData.start_time | hour}}
+                </p>
+                <p>
+                    <span class="blue bold">Tickets: </span>
+                    {{selected.length + '(' + (showData.price*selected.length) + '$)'}}
+                </p>
+            </div>
+        </div>
+        <hr>
+
+        <div>
+            <p class="price">
+                <span class="blue total me-2">Total</span>
+                {{(showData.price*selected.length) + '$' }}
+            </p>
+        </div>
+
+        <div class="buy row">
+
+            <button pButton 
+            (click)="car()"
+            [disabled]="selected.length<=0"
+            label="Add to car"
+            icon="pi pi-shopping-cart"
+            class="col-6 p-button-raised p-button-rounded
+            p-button-outlined"></button>
+
+            <button pButton 
+            (click)="buy()"
+            [disabled]="selected.length<=0"
+            label="Buy now"
+            icon="pi pi-dollar"
+            class="col-6 p-button-raised p-button-rounded
+            p-button-outlined"></button>
+
+        </div>
+    
+    </div>
+</div>
+</div>

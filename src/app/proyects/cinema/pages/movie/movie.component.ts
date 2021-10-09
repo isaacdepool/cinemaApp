@@ -29,7 +29,7 @@ export class MovieComponent implements OnInit {
   isShow: boolean = false;
 
   myForm: FormGroup = this.fb.group({
-    id: [, Validators.required],
+    show: [, Validators.required],
   })
 
   constructor( private activatedRoute: ActivatedRoute,
@@ -46,7 +46,7 @@ export class MovieComponent implements OnInit {
 
         this.movieSvc.getMovies().subscribe( resp =>{
     
-          this.moviesData = (resp.moviesData) || [];
+          this.moviesData = resp.moviesData || [];
 
           this.moviesData = this.filterSvc.filter(this.moviesData, this.idMovie);
           this.movieData = this.moviesData[0];
@@ -118,9 +118,10 @@ export class MovieComponent implements OnInit {
   }
 
   selectShow(e:any){
-    console.log(this.myForm.value.id.id);
     
-    
+    const id = this.myForm.value.show.id;
+    this.router.navigateByUrl(`/proyects/cinema/buy-show/${id}`);
+
   }
 
   calendar(){
