@@ -22,14 +22,17 @@ navbar-dark bg-dark">
       
       <!-- cart and user -->
       <div class="space-bs">
-            <button routerLink="cart"
+            <button 
+              (click)="car()"
               pButton
               type="button"
               icon="pi pi-shopping-cart"
               class="space-b 
               p-button-raised
               p-button-rounded
-              p-button-outlined"> 
+              p-button-outlined"
+              data-bs-toggle="modal" 
+              data-bs-target="#staticBackdrop"> 
             </button>
   
               <button *ngIf="!isActiveUser"
@@ -128,4 +131,69 @@ navbar-dark bg-dark">
 
     </div>
   </nav>
+
+  <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content secondary">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Confirm Purchase</h5>
+
+            <button (click)="clear()"
+            type="button" 
+            class="btn-close" 
+            data-bs-dismiss="modal" 
+            aria-label="Close"></button>
+
+          </div>
+          <div class="modal-body">
+
+            <div class="total">
+              <p>Total ({{carData.length}} Tickets): </p>
+              <span>{{getPrice()}}$</span>
+            </div>
+            <hr style="display: block !important;">
+
+            <div *ngIf="data.length > 0">
+              <h3>Summary</h3>
+
+              <div *ngFor="let dat of data; let i = index"
+              class="data mb-4">
+
+              <div>
+
+                <img *ngIf="data.length === carData.length"
+                class="me-3" 
+                [src]="dat.vertical_poster" alt="">
+              </div>
+
+                <div *ngIf="data.length === carData.length"> 
+
+                  <p>{{dat.title | titlecase}}</p>
+                  <p>Day: {{dat.day}}</p>
+                  <p>Hour: {{dat.hour |hour }}</p>
+                  <p>Room: {{dat.room |uppercase }}</p>
+                  <p>Seat: {{dat.seat.toString() |uppercase}}</p>
+                  <p>Price: {{dat.price}}$</p>
+                  <!-- <p>Total(3 tickets): </p> -->
+                  
+                  <button (click)="delete(carData[i].id, i)"
+                    class="btn btn-outline-danger mt-2">
+                    Delete
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button (click)="clear()"
+            type="button" 
+            class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Pay</button>
+          </div>
+        </div>
+      </div>
+    </div>
 

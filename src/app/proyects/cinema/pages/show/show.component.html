@@ -84,6 +84,10 @@ class="back pb-3">
                     {{showData.start_time | hour}}
                 </p>
                 <p>
+                    <span class="blue bold">Price: </span>
+                    {{showData.price + '$'}}
+                </p>
+                <p>
                     <span class="blue bold">Tickets: </span>
                     {{selected.length + '(' + (showData.price*selected.length) + '$)'}}
                 </p>

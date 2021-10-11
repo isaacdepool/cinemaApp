@@ -60,3 +60,17 @@ export interface Show{
     id_movie: number
 }
 
+export interface CrudCar{
+    ok: boolean,
+    msg: string,
+    carData: Car,
+    carsData: Car[]
+}
+
+export interface Car{
+    id: number,
+    seat: string
+    id_movie_show: number,
+    id_user: number,
+    status: boolean
+}

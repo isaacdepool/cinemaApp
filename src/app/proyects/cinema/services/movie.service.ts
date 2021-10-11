@@ -40,7 +40,6 @@ export class MovieService {
     return this.httpClient.post<CrudMovie>(url, body)
       .pipe(
         tap( resp =>{
-          console.log(resp);
           
         })
       )

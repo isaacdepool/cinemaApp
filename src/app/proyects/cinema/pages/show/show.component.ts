@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ShowService } from '../../services/show.service';
 import { Show, Room, Movie } from '../../interfaces/interfaces';
 import { MovieService } from '../../services/movie.service';
 import { RoomService } from '../../services/room.service';
+import { CarService } from '../../services/car.service';
+import { UserService } from '../../auth/services/user.service';
+import { User } from '../../auth/interfaces/interfaces';
 
 @Component({
   selector: 'app-show',
@@ -25,7 +28,10 @@ export class ShowComponent implements OnInit {
   constructor( private activateRoute: ActivatedRoute,
                private showSvc: ShowService,
                private movieSvc: MovieService,
-               private roomSvc: RoomService) {
+               private roomSvc: RoomService,
+               private carSvc: CarService,
+               private userSvc: UserService,
+               private router: Router) {
 
     this.activateRoute.paramMap.subscribe( resp =>{
 
@@ -66,7 +72,6 @@ export class ShowComponent implements OnInit {
 
     this.roomSvc.getRoom(id).subscribe( resp => {
       this.roomData = resp;
-      console.log(this.roomData);
       
 
       for( let i=0; i<this.roomData.seats; i++){
@@ -147,7 +152,19 @@ export class ShowComponent implements OnInit {
 
   car(){
 
-    
+    for (let i = 0; i < this.selected.length; i++) {
+      
+      this.carSvc.postCar( this.selected[i], 
+                           this.showData.id, 
+                           Number(this.userSvc.User.id)).subscribe( resp =>{
+          
+        if(resp.ok){
+
+          this.router.navigateByUrl('proyects/cinema/now-playing');
+        }
+      })
+    }
+      
 
   }
 

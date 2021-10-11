@@ -77,12 +77,38 @@ hr{
     padding: 1rem 1rem;
 }
 
+.total{
+    font-size: 1.1rem;
+    display: flex;
+}
+
+.total span{
+    position: absolute;
+    right: 25px;
+}
+
 .min{
     display: none;
 }
 
 .max{
     display: unset;
+}
+
+.secondary{
+    background: #002169;
+}
+
+.data img{
+    width: 150px;
+}
+
+.data{
+    display: flex;
+}
+
+.data p{
+    margin-bottom: 0 !important;
 }
 
 @media screen and (max-width:991px) {

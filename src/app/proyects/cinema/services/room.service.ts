@@ -32,7 +32,7 @@ export class RoomService {
   getRoom(id:number){
 
     const url = `${this.baseUrl}/rooms/${id}`;
-
+    
     return this.http.get<CrudRoom>(url)
       .pipe(
         map( resp => resp.roomData),
