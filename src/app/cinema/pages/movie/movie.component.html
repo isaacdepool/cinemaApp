@@ -1,0 +1,109 @@
+
+<ng-container *ngIf="isData">
+
+    <div class="poster animated fadeIn fast"
+    [ngStyle]="{'background-image': 'url(\''+movieData.horizontal_poster+'\')'}">
+        
+    </div>
+    
+    <div class="container mt-5 mb-5 content animated fadeIn">
+        <h3>{{ movieData.name |titlecase}}</h3>
+        <span>Directors: {{ movieData.directors }}</span>
+        
+        <div class="row">
+            <div *ngIf="movieData.role != 'COMING-SOON'"
+            class="col btn-style-l d-grid gap-2">
+                <button
+                (click)="calendar()"
+                [ngClass]="{'btn-act': isCalendar}"
+                class="btn-style btn btn-outline-primary btn-block">
+                    Hours
+                </button>
+            </div>
+    
+            <div class="col btn-style-r d-grid gap-2">
+                <button (click)="synopsis()"
+                [ngClass]="{'btn-act': !isCalendar}"
+                class="btn-style btn btn-outline-primary btn-block">
+                    Synopsis
+                </button>
+            </div>
+        </div>
+    
+        <div class="row mt-5 ms-3 me-3">
+        
+        <!-- is no-show  -->
+        <div *ngIf="!isShow && isCalendar">
+            <h4>Sorry, this movie dosen`t have a show :(</h4>
+            <hr>
+        </div>
+
+        <!-- Calendar -->
+        <div *ngIf="isCalendar && movieData.role != 'COMING-SOON' && isShow"
+        class="col-12">
+            <h4>Select a movie show</h4>
+    
+            <hr>
+
+            <h4 >Select Day</h4>
+        
+                <span class="">
+                        
+                    <select class="block opt mb-4"
+                    (change)="h($event.target)">
+
+                    <option disabled> Select a option</option>
+                    <option *ngFor="let item of showDays"
+                    [value]="item">{{item}}</option>
+                    </select>
+
+                </span>
+
+            <ng-container *ngIf="ok">
+                
+                <h4>Shows</h4>
+        
+                    <p class="mt-3">Traditional - 2D Esp</p>
+    
+            <form [formGroup]="myForm"
+                autocomplete="off"> 
+
+                    <p-selectButton [options]="showHours" 
+                    formControlName="show"
+                    (onChange)="selectShow($event.target)"
+                    optionLabel="start_time"
+                    class="p-button-rounded">
+
+                        <ng-template let-item>
+                            <span>{{item.start_time | hour}}</span>
+                        </ng-template>
+                    </p-selectButton>
+                <hr>
+            </form>
+                
+            </ng-container>
+        </div>
+    
+        <!-- Synopsis -->
+            <div *ngIf="!isCalendar"
+            class="col-12">
+                <p class="pi pi-tag"> {{ movieData.rating }}</p>
+                <br>
+                <p class="pi pi-clock"> {{ movieData.duration }}m</p>
+                <br>
+                <p class="pi pi-ticket"> {{ movieData.genre }}</p>
+    
+                <hr>
+    
+                <h4>Synopsis</h4>
+                <p>{{ movieData.synopsis }}</p>
+    
+                <hr>
+    
+                <h3>Cast</h3>
+                <p>{{ movieData.actors }}</p>
+            </div>
+        </div>
+    </div>
+    
+</ng-container>

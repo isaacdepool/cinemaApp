@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'http://localhost:8000/api'
+  baseUrl: 'https://depool-cinema.herokuapp.com/api'
 };

@@ -1,0 +1,195 @@
+
+
+<form [formGroup]="myForm"
+autocomplete="off">
+    <div class="row">
+        <div class="col-sm-6 col-12">
+
+            <div class="mb-2 form-floating">
+                <input type="text" 
+                formControlName="name"
+                placeholder="Name"
+                [ngClass]="isValidControl('name')? 'invalid': ''"
+                class="form-control">
+        
+                <label for="floatingInput"
+                class="pi pi-user"> Name*</label>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-12">
+
+            <div class="mb-2 form-floating">
+                <input type="text"
+                formControlName="last_name" 
+                placeholder="Last name"
+                [ngClass]="isValidControl('last_name')? 'invalid': ''"
+                class="form-control">
+        
+                <label for="floatingInput"
+                class="pi pi-user"> Last name*</label>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-12">
+
+            <div class="mb-2 form-floating">
+                <input type="date" 
+                min="1900-01-01"
+                max="2005-12-31"
+                formControlName="date_birth"
+                placeholder="Date of birth"
+                [ngClass]="isValidControl('date_birth')? 'invalid': ''"
+                class="form-control"> 
+        
+                <label for="floatingInput"
+                class="pi pi-calendar"> Date of birth*</label>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-12">
+
+            <div class="mb-2 form-floating input">
+                <input type="text"
+                formControlName="phone"  
+                placeholder="Phone"
+                maxlength="11"
+                minlength="11"
+                [ngClass]="isValidControl('phone')? 'invalid': ''"
+                class="form-control">
+        
+                <label for="floatingInput"
+                class="pi pi-phone"> Phone*</label>
+
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-12">
+
+            <div class="mb-2 form-floating">
+                <textarea type="text" 
+                formControlName="direction"
+                placeholder="Direction"
+                [ngClass]="isValidControl('direction')? 'invalid': ''"
+                class="form-control"></textarea>
+        
+                <label for="floatingInput"
+                class="pi pi-map-marker"> Direction*</label>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-12">
+
+            <div class="mb-2 form-floating">
+                <input type="text" 
+                formControlName="email"
+                placeholder="Email"
+                [ngClass]="isValidControl('email')? 'invalid': ''"
+                [ngClass]="err.isErr? 'invalid': ''"
+                class="form-control">
+        
+                <label for="floatingInput"
+                class="pi pi-envelope"> Email*</label>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-12">
+
+            <div class="mb-2 form-floating input">
+                <input [type]="password.typePassword"
+                formControlName="password"  
+                placeholder="Password"
+                [ngClass]="isValidControl('password')? 'invalid': ''"
+                class="form-control">
+        
+                <label for="floatingInput"
+                class="pi pi-lock"> Password*</label>
+
+                <p (click)="eye()"
+                [class]="password.icon" 
+                class="eye"></p>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-12">
+
+            <div class="mb-2 form-floating input">
+                <input [type]="password.typePassword"
+                placeholder="Confirm Password" 
+                formControlName="confPass"
+                [ngClass]="isValidControl('confPass')? 'invalid': ''"
+                class="form-control">
+        
+                <label for="floatingInput"
+                class="pi pi-lock"> Confirm Password*</label>
+
+                <p (click)="eye()"
+                [class]="password.icon" 
+                class="eye"></p>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-12">
+
+            <div class="mt-4 ms-2">
+                <span>The password must contain:</span>
+                    <div class="ms-4 r-p">
+                        <p>* At least 8 characters.</p>
+                        <p>* Upper case and lower case.</p>
+                        <p>* At least one number.</p>
+                        <p>* A special character ($% &).</p>
+                    </div>
+            </div>
+        </div>
+         
+        <div class="col-sm-6 col-12">
+        
+            <div class="mt-4 ms-2">
+                <span>* Required</span>
+                    <div class="ms-4 r-err">
+                        <p *ngIf="isValidControl('name')">* Name is necessary.</p>
+                        <p *ngIf="isValidControl('lastName')">* Last name is necessary.</p>
+                        <p *ngIf="isValidControl('date_birth')">* Date is wrong.</p>
+                        <p *ngIf="isValidControl('phone')">* Correct Phone is necessary.</p>
+                        <p *ngIf="isValidControl('direction')">* Direction is necessary.</p>
+                        <p *ngIf="isValidControl('email')">* Correct Email is necessary (example@example.com).</p>
+                        <p *ngIf="isValidControl('password')">* Correct Password is necessary.</p>
+                        <p *ngIf="myForm.controls!.confPass.errors?.noEqual">* The Passwords is not the same.</p>
+                        <p *ngIf="err.isErr">* {{err.msg |titlecase}}.</p>
+                    </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="mt-3">
+        <div class="form-check">
+            <input class="form-check-input" 
+            type="checkbox" 
+            value=""
+            formControlName="accept"
+            id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                I Agree to Terms and Conditions
+            </label>
+          </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12 col-md-6 mb-2 d-grid gap-2">
+            <button class="btn btn-primary"
+            type="submit"
+            [disabled]="myForm.invalid"
+            (click)="register()">
+            Register
+        </button>
+        </div>
+
+        <div class="col-12 col-md-6 mb-2 d-grid gap-2">
+            <button routerLink="../login"
+            class="btn btn-outline-primary">
+                Login
+            </button>
+        </div>
+    </div>
+</form>
