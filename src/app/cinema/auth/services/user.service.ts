@@ -33,7 +33,7 @@ export class UserService {
             
           }
         }),
-        map( valid => valid.ok ),
+        map( valid => valid ),
         catchError( err => of(err.error.msg))
       )
   }

@@ -80,7 +80,7 @@ class="back pb-3">
                     {{showData.day}}
                 </p>
                 <p>
-                    <span class="blue bold">Show: </span>
+                    <span class="blue bold">Hour: </span>
                     {{showData.start_time | hour}}
                 </p>
                 <p>
@@ -106,7 +106,7 @@ class="back pb-3">
 
             <button pButton 
             (click)="car()"
-            [disabled]="selected.length<=0"
+            [disabled]="selected.length<=0 || isPurchase"
             label="Add to car"
             icon="pi pi-shopping-cart"
             class="col-6 p-button-raised p-button-rounded

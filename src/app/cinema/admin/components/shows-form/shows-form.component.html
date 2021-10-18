@@ -92,12 +92,24 @@ autocomplete="off">
 
     <div class="row mb-5">
         <div class="col-12 mt-2" >
-            <button [disabled]="myForm.invalid"
+            <button *ngIf="!showData"
+            [disabled]="myForm.invalid"
             type="submit"
             (click)="save()"
             pButton
             icon="pi pi-pencil"
             label="Save"
+            class="p-button-rounded block"></button>
+        </div>
+
+        <div class="col-12 mt-2" >
+            <button *ngIf="showData"
+            [disabled]="myForm.invalid"
+            type="submit"
+            (click)="update()"
+            pButton
+            icon="pi pi-pencil"
+            label="Update"
             class="p-button-rounded block"></button>
         </div>
 

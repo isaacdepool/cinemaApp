@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShowService } from '../../services/show.service';
 import { Show, Room, Movie } from '../../interfaces/interfaces';
@@ -6,7 +6,6 @@ import { MovieService } from '../../services/movie.service';
 import { RoomService } from '../../services/room.service';
 import { CarService } from '../../services/car.service';
 import { UserService } from '../../auth/services/user.service';
-import { User } from '../../auth/interfaces/interfaces';
 
 @Component({
   selector: 'app-show',
@@ -22,8 +21,9 @@ export class ShowComponent implements OnInit {
 
   column: string[] = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
   seats: number[] = [];
-  busy: string[] = ['C2','C3','A1'];
+  busy: string[] = [];
   selected: string[] = [];
+  isPurchase: boolean = false;
 
   constructor( private activateRoute: ActivatedRoute,
                private showSvc: ShowService,
@@ -31,7 +31,7 @@ export class ShowComponent implements OnInit {
                private roomSvc: RoomService,
                private carSvc: CarService,
                private userSvc: UserService,
-               private router: Router) {
+               private router: Router,) {
 
     this.activateRoute.paramMap.subscribe( resp =>{
 
@@ -55,10 +55,24 @@ export class ShowComponent implements OnInit {
 
         this.getMovie(this.showData.id_movie);
         this.getRoom(this.showData.id_room);
+        this.getCar();
       }
 
     });
 
+  }
+
+  getCar(){
+    this.carSvc.getCars().subscribe( resp =>{
+
+      for (const data of resp.carsData) {
+        
+        if(data.id_movie_show === Number(this.id_show)){
+          this.busy.push(data.seat);
+        }
+      }
+      
+    })
   }
 
   getMovie(id:number){
@@ -151,16 +165,15 @@ export class ShowComponent implements OnInit {
   }
 
   car(){
-
+    this.isPurchase = true;
     for (let i = 0; i < this.selected.length; i++) {
       
-      this.carSvc.postCar( this.selected[i], 
+      this.carSvc.postCar( this.selected[i],
                            this.showData.id, 
                            Number(this.userSvc.User.id)).subscribe( resp =>{
           
         if(resp.ok){
-
-          this.router.navigateByUrl('now-playing');
+          this.router.navigateByUrl('/home');
         }
       })
     }

@@ -52,6 +52,8 @@ export class CarService {
       )
   }
 
+  
+
   postCar(seat:string, id_movie_show:number, id_user:number){
 
     const url = `${this.baseUrl}/cars`;

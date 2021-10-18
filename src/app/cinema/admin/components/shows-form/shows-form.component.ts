@@ -77,11 +77,40 @@ export class ShowsFormComponent implements OnInit {
         });
   }
 
+  update(){
+
+    this.moment();
+   
+   if(this.ok == true){     
+
+     const { price, start_time, end_time, day, id_room, id_movie } = this.myForm.value; 
+      this.showSvc.updateShow( this.showData.id, price, start_time, end_time, day, id_room, id_movie )
+        .subscribe( resp =>{ 
+  
+          if(resp.ok){
+  
+            this.router.navigateByUrl('/admin/shows');
+            alert('Show has been update and saved!');
+  
+          }else{ 
+            alert(resp.msg);
+          }
+        });
+
+   }else{
+
+      this.myForm.controls['start_time'].reset();
+      this.myForm.controls['end_time'].reset();
+      alert('Start has to be greater than the end');
+   }
+
+  }
+
   save(){
 
    this.moment();
    
-   if(this.ok == true){
+   if(this.ok == true){     
 
      const { price, start_time, end_time, day, id_room, id_movie } = this.myForm.value; 
       this.showSvc.saveShow( price, start_time, end_time, day, id_room, id_movie )
@@ -108,8 +137,6 @@ export class ShowsFormComponent implements OnInit {
 
   delete(){
 
-    console.log(this.showData.id);
-    
     this.showSvc.deleteShow(this.showData.id)
       .subscribe( ok =>{
 
@@ -124,6 +151,8 @@ export class ShowsFormComponent implements OnInit {
 
   moment(){
 
+    console.log(this.myForm.value.start_time);
+    
      var start = moment(this.myForm.value.start_time).format('HH:mm');
      var end = moment(this.myForm.value.end_time).format('HH:mm');
 
@@ -138,8 +167,8 @@ export class ShowsFormComponent implements OnInit {
 
     this.myForm.reset({
       price: data.price,
-      start_time: moment(data.start_time).format('HH:mm'),
-      end_time: moment(data.end_time).format('HH:mm'),
+      start_time: new Date(data.start_time),
+      end_time: new Date(data.end_time),
       day: new Date(data.day),
       id_room: data.id_room,
       id_movie: data.id_movie

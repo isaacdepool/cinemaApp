@@ -12,7 +12,7 @@ export class MovieCardComponent implements OnInit{
   @Input() title: string = '';
   @Input() movies: Movie[] = [];
   
-  buttonTitle: string = 'Buy Tickets';
+  buttonTitle: string = 'Get Tickets';
 
   constructor( private router: Router) {     
   }

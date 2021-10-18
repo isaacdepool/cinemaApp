@@ -3,6 +3,9 @@ import { UserService } from '../../services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidatorsService } from '../../services/validators.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+import { switchMap } from 'rxjs/operators';
+import { User } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-login',
@@ -29,6 +32,7 @@ export class LoginComponent implements OnInit {
   constructor( private userSvc: UserService,
                private fb: FormBuilder,
                private validatorsSvc: ValidatorsService,
+               private location: Location,
                private router: Router) { }
  
   ngOnInit(): void {
@@ -38,19 +42,41 @@ export class LoginComponent implements OnInit {
 
     const { email, password } = this.myForm.value;
 
-    this.userSvc.login(email, password).subscribe( ok =>{
-
-      if(ok===true){
-        this.router.navigateByUrl('/home')
-          .then( _ => window.location.reload());
-
+    this.userSvc.login(email, password).pipe(
+      switchMap( ok => {
+        if(ok.ok===true){
+              this.location.back();
+            }else{
+              this.err = {
+                isErr: true,
+                msg: ok
+              }
+            }
+          return this.userSvc.login(email, password);
+      })
+    ).subscribe( ok =>{
+      
+      if(ok.ok===true){
+        window.location.reload();
       }else{
         this.err = {
           isErr: true,
-          msg: ok
+          msg: 'false'
         }
       }
     })
+    // subscribe( ok =>{
+
+    //   if(ok===true){
+    //     this.location.back();
+
+    //   }else{
+    //     this.err = {
+    //       isErr: true,
+    //       msg: ok
+    //     }
+    //   }
+    // })
   }
 
   isValidControl(value:string){

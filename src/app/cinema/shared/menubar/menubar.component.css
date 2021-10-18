@@ -54,7 +54,7 @@ hr{
 
 .cont{
     padding: 0;
-    background: linear-gradient(90deg,#000,#002169);
+    background: linear-gradient(90deg,#020024,#090979, #00d4ff);
 }
 
 .navbar-expand-lg[_ngcontent-myu-c31] .navbar-nav[_ngcontent-myu-c31] {
@@ -109,6 +109,15 @@ hr{
 
 .data p{
     margin-bottom: 0 !important;
+}
+
+.ske{
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.skele{
+    display: inline-block;
 }
 
 @media screen and (max-width:991px) {
@@ -178,7 +187,7 @@ hr{
     .nb-c{
         padding: 1rem 1rem;
         border-bottom: unset;
-        background: linear-gradient(90deg,#000,#002169);
+        background: linear-gradient(90deg,#020024,#090979, #00d4ff);
     }
 
     .min{

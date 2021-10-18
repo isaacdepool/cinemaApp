@@ -51,12 +51,12 @@ export class ShowService {
 
   updateShow(id:number, price:number, start_time: string, end_time: string, day: string, id_room: number, id_movie: number){
 
-    const url = `${this.baseUrl}/movie-shows${id}`;
+    const url = `${this.baseUrl}/movie-shows/${id}`;
     const body = {price, start_time, end_time, day, id_room, id_movie}
 
     return this.http.put<CrudShow>(url, body)
       .pipe( 
-        map( resp => resp.ok ),
+        map( resp => resp ),
         catchError( err => of(err.error.msg))
       )
   }

@@ -22,6 +22,7 @@ export class MenubarComponent implements OnInit {
   gene: any[] = [];
 
   data = [{
+    id: 0,
     seat: '',
     price: 0,
     day: '',
@@ -76,8 +77,8 @@ export class MenubarComponent implements OnInit {
   }
 
   clear(){
-    console.log('j');
     
+    this.data = [];
     this.carData = [];
     this.carData2 = [];
 
@@ -94,21 +95,23 @@ export class MenubarComponent implements OnInit {
       .subscribe( resp =>{
 
         this.carData = resp.carsData;
-          
         this.getshow(); 
         
 
       })
   }
 
-  getPrice(){
+  getPrice(data:any){
 
     let total = 0;
 
-    if(this.data.length === this.carData.length){
+    if(data.length > 0){
 
-      for (const data of this.data) {
-        total += data.price
+      for (const dat of data) {
+        if(dat){
+
+          total += dat.price
+        }
       }
       return total
     }
@@ -122,6 +125,7 @@ export class MenubarComponent implements OnInit {
         this.showSvc.getShow(this.carData[i].id_movie_show).pipe(
           switchMap( resp => {
             this.data[i] = {
+              id: this.carData[i].id,
               seat: this.carData[i].seat,
               price: resp.movieShow.price,
               day: resp.movieShow.day,
@@ -154,7 +158,6 @@ export class MenubarComponent implements OnInit {
     this.carSvc.deleteCar(id).subscribe( resp => {
       if(resp.ok){
         this.data.splice(i, 1);
-        this.car();
         
       }
     })

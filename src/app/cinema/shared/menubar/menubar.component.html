@@ -22,7 +22,7 @@ navbar-dark bg-dark">
       
       <!-- cart and user -->
       <div class="space-bs">
-            <button 
+            <button *ngIf="isActiveUser"
               (click)="car()"
               pButton
               type="button"
@@ -148,45 +148,90 @@ navbar-dark bg-dark">
           </div>
           <div class="modal-body">
 
-            <div class="total">
-              <p>Total ({{carData.length}} Tickets): </p>
-              <span>{{getPrice()}}$</span>
-            </div>
-            <hr style="display: block !important;">
+            <div>
 
-            <div *ngIf="data.length > 0">
-              <h3>Summary</h3>
-
-              <div *ngFor="let dat of data; let i = index"
-              class="data mb-4">
-
-              <div>
-
-                <img *ngIf="data.length === carData.length"
-                class="me-3" 
-                [src]="dat.vertical_poster" alt="">
+              <div class="total">
+                <p>Total ({{carData.length}} Tickets): </p>
+                <span>{{getPrice(data)}}$</span>
               </div>
+              <hr style="display: block !important;">
+  
+              <div>
+                <h3>Summary</h3>
 
-                <div *ngIf="data.length === carData.length"> 
+                <div *ngIf=" data.length <= 0"
+                class="data">
+                  <p-skeleton
+                  class="me-3"
+                  height="200px"
+                  width="150px"></p-skeleton>
 
-                  <p>{{dat.title | titlecase}}</p>
-                  <p>Day: {{dat.day}}</p>
-                  <p>Hour: {{dat.hour |hour }}</p>
-                  <p>Room: {{dat.room |uppercase }}</p>
-                  <p>Seat: {{dat.seat.toString() |uppercase}}</p>
-                  <p>Price: {{dat.price}}$</p>
-                  <!-- <p>Total(3 tickets): </p> -->
-                  
-                  <button (click)="delete(carData[i].id, i)"
-                    class="btn btn-outline-danger mt-2">
-                    Delete
-                  </button>
+                  <div
+                  class="skele">
+
+                    <div class="ske">
+                      <p-skeleton width="180px"></p-skeleton>
+                    </div>
+                    <div class="ske">
+                      <p-skeleton width="100px"></p-skeleton>
+                    </div>
+                    <div class="ske">
+                      <p-skeleton width="120px"></p-skeleton>
+                    </div>
+                    <div class="ske">
+                      <p-skeleton width="150px"></p-skeleton>
+                    </div>
+                    <div class="ske">
+                      <p-skeleton width="120px"></p-skeleton>
+                    </div>
+                    <div class="ske">
+                      <p-skeleton width="110px"></p-skeleton>
+                    </div>
+                    <div class="ske">
+                      <p-skeleton width="140px"></p-skeleton>
+                    </div>
+                  </div>
                 </div>
+  
+                <ng-container *ngIf="data.length > 0 && carData.length > 0">
+
+                  <div *ngFor="let dat of data; let i = index"
+                  class="data mb-4">
+    
+                  <div>
+    
+                    <img *ngIf="dat"
+                    class="me-3" 
+                    [src]="dat.vertical_poster" alt="">
+  
+                    
+  
+                  </div>
+    
+                    <div *ngIf="dat"> 
+    
+                      <p>{{dat.title | titlecase}}</p>
+                      <p>Day: {{dat.day}}</p>
+                      <p>Hour: {{dat.hour |hour }}</p>
+                      <p>Room: {{dat.room |uppercase }}</p>
+                      <p>Seat: {{dat.seat.toString() |uppercase}}</p>
+                      <p>Price: {{dat.price}}$</p>
+                      <!-- <p>Total(3 tickets): </p> -->
+                      
+                      <button (click)="delete(dat.id, i)"
+                        class="btn btn-outline-danger mt-2">
+                        Delete
+                      </button>
+                    </div>
+    
+                  </div>
+                </ng-container>
 
               </div>
             </div>
 
           </div>
+
           <div class="modal-footer">
             <button (click)="clear()"
             type="button" 
