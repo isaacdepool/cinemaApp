@@ -33,7 +33,39 @@
 }
 
 .img-card{
-    height: 400px;
+    height: 300px;
+}
+
+.soon img{
+    width: 80%;
+    display: flex;
+    margin: auto;
+}
+
+.comming{
+    border-radius: 50px;
+}
+
+.text1-soon{
+    padding-right: 6vw;
+}
+
+.text2-soon{
+    padding-left: 6vw;
+}
+
+
+.title-soon{
+    text-align: left !important;
+    font-weight: bold;
+}
+
+.tags{
+    text-align: left !important;
+}
+
+.rw{
+    --bs-gutter-x: unset !important;
 }
 
 .popcorn{
@@ -49,7 +81,16 @@
     background-color: unset !important;
 }
 
-.btn{
+.now{
+    display: inline-flex;
+}
+
+.more{
+    border: none;
+    border-radius: 50px;
+}
+
+.btn-get{
     position: relative;
     bottom: 20px;
     border-radius: 50px;
@@ -79,5 +120,31 @@
     .popcorn{
         height: 200px;
     }
+
+    .btn-get{
+        font-size: .8rem !important;
+    }
     
     }
+
+@media screen and (max-width: 778px){
+
+        .soon img{
+            width: 80%;
+            display: flex;
+            margin: auto;
+        }
+
+        .text2-soon{
+            padding: 0 50px;
+        }
+
+        .text1-soon{
+            padding: 0 50px;
+        }
+
+        .img2{
+            width: 100% !important;
+        }
+           
+}

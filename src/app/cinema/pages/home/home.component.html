@@ -1,83 +1,178 @@
-<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
+<div *ngIf="moviesNow.length > 0">
 
-      <ng-container *ngFor="let movie of movies; let i = index">
-
-        <button type="button" 
-        data-bs-target="#carouselExampleCaptions" 
-        [attr.data-bs-slide-to]="i" 
-        [ngClass]="i===0? 'active': ''" 
-        aria-current="true" 
-        aria-label="Slide i"></button>
-
-      </ng-container>
-    </div>
-
-    <div class="carousel-inner">
-
-      <ng-container *ngFor="let movie of movies; let i = index">
-
-      <div class="carousel-item movie"
-      [ngClass]="i===0? 'active': ''"
-      (click)="redirecTo(movie)">
-
-          <img [src]="movie.horizontal_poster" 
-          class="poster" 
-          [alt]="movie.name">
-
-          <div class="buy">
-            BUY YOUR TICKES
-          </div>
-
-        </div>
-      </ng-container>
-
-      </div>
-
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-
-  <div>
-
-    <div class="mt-4 ms-4">
-      <h2>Now Playing</h2>
-    </div>
-
-    <div class="me-4 ms-4 mt-4 mb-4">
-
-      
-      <div class="row">
-        <ng-container *ngFor="let movie of movies">
-          <div class="col-6 col-md-4 col-lg-3">
-            
-            <div class="card mt-3">
-
-              <img [src]="movie.vertical_poster" 
-              class="card-img-top img-card" 
-              [alt]="movie.name">
-
-              <button class="btn btn-outline-primary">
-                Get ticket
-              </button>
-              
-            </div>
-
-          </div>
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+  
+        <ng-container *ngFor="let movie of moviesNow; let i = index">
+  
+          <button type="button" 
+          data-bs-target="#carouselExampleCaptions" 
+          [attr.data-bs-slide-to]="i" 
+          [ngClass]="i===0? 'active': ''" 
+          aria-current="true" 
+          aria-label="Slide i"></button>
+  
         </ng-container>
       </div>
-      
+  
+      <div class="carousel-inner">
+  
+        <ng-container *ngFor="let movie of moviesNow; let i = index">
+  
+        <div class="carousel-item movie"
+        [ngClass]="i===0? 'active': ''"
+        (click)="redirecTo(movie)">
+  
+            <img [src]="movie.horizontal_poster" 
+            class="poster" 
+            [alt]="movie.name">
+  
+            <div class="buy">
+              BUY YOUR TICKES
+            </div>
+  
+          </div>
+        </ng-container>
+  
+        </div>
+  
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-  </div>
+  
+    <div class="container">
+  
+      <div class="mt-4 ms-4 me-4 now">
+        <h2>Now Playing</h2>
+  
+        <button routerLink="/now-playing"
+        class="btn btn-outline-primary more ms-4">View More...</button>
+      </div>
+      <hr>
+  
+      <div class="me-4 ms-4 mt-4 mb-4">
+  
+        
+        <div class="row">
+          <ng-container *ngFor="let movie of moviesNow; let i = index">
+  
+            <div class="col-6 col-md-4 col-lg-3">
+              
+              <div *ngIf="i <= 3 "
+              class="card mt-3">
+  
+                <img [src]="movie.vertical_poster" 
+                class="card-img-top img-card" 
+                [alt]="movie.name">
+  
+                <button (click)="redirecTo(movie)"
+                class="btn-get btn btn-outline-primary">
+                  Get tickets
+                </button>
+                
+              </div>
+  
+            </div>
+          </ng-container>
+        </div>
+        
+      </div>
+    </div>
+  
+    <div class="popcorn mb-5">
+  
+      <h2 class="text">Popcorn, Soda and Fun...</h2>
+  
+    </div>
 
-  <div class="popcorn mb-5">
+    <div class="container">
+  
+      <div class="mt-4 ms-4 me-4 now">
+        <h2>Premieres</h2>
+  
+        <button routerLink="/premieres"
+        class="btn btn-outline-primary more ms-4">View More...</button>
+      </div>
+      <hr>
+  
+      <div class="me-4 ms-4 mt-4 mb-4">
+  
+        
+        <div class="row">
+          <ng-container *ngFor="let movie of moviesPremier; let i = index">
+  
+            <div class="col-6 col-md-4 col-lg-3">
+              
+              <div *ngIf="i <= 3 "
+              class="card mt-3">
+  
+                <img [src]="movie.vertical_poster" 
+                class="card-img-top img-card" 
+                [alt]="movie.name">
+  
+                <button (click)="redirecTo(movie)"
+                class="btn-get btn btn-outline-primary">
+                  Get tickets
+                </button>
+                
+              </div>
+  
+            </div>
+          </ng-container>
+        </div>
+        
+      </div>
+    </div>
 
-    <h2 class="text">Popcorn, Soda and Fun...</h2>
+    <div *ngIf="moviesSoon.length > 0"
+    class="soon pb-4">
+      <div class="row rw">
+        <div class="col-md-8 col-12">
+          
+          <img [src]="moviesSoon[0].horizontal_poster" 
+                class="card-img-top img2" 
+                [alt]="moviesSoon[0].name">
+        </div>
 
-  </div>
+        <div class="col-md-4 col-12">
+          <div class="text1-soon mt-2">
+            <h3 class="sy">{{moviesSoon[0].name |titlecase}}</h3>
+            <p class="sy">{{moviesSoon[0].synopsis}}</p>
+    
+              <button routerLink="/premieres"
+                class="btn btn-outline-danger comming">Comming Soon...</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="moviesSoon.length > 1"
+    class="soon pb-4">
+          <div class="row rw">
+      
+        <div class="col-md-4 col-12 ">
+          <div class="text2-soon mt-2">
+            <h3 class="sy">{{moviesSoon[1].name |titlecase}}</h3>
+            <p class="sy">{{moviesSoon[1].synopsis}}</p>
+    
+              <button routerLink="/premieres"
+                class="btn btn-outline-danger comming">Comming Soon...</button>
+          </div>
+        </div>
+
+        <div class="col-md-8 col-12 order-first order-md-last">
+          
+          <img [src]="moviesSoon[1].horizontal_poster" 
+                class="card-img-top img2" 
+                [alt]="moviesSoon[1].name">
+        </div>
+      </div>
+    </div>
+    
+</div>

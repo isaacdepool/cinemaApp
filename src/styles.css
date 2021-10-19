@@ -37,6 +37,10 @@ html, body{
     animation-name: fadeIn;
   }
 
+  .card {
+    border: none;
+}
+
 @media screen and (min-width: 1400px){
 
     .container{

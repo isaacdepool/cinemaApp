@@ -12,7 +12,9 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  movies: Movie[] = [];
+  moviesNow: Movie[] = [];
+  moviesPremier: Movie[] = [];
+  moviesSoon: Movie[] = [];
 
   constructor( private userSvc: UserService,
                private movieSvc: MovieService,
@@ -22,7 +24,9 @@ export class HomeComponent implements OnInit {
 
     this.movieSvc.getMovies().subscribe( resp =>{
 
-      this.getNow(resp.moviesData || [])
+      this.getNow(resp.moviesData || []);
+      this.getPremiere(resp.moviesData || []);
+      this.getSoon(resp.moviesData || []);
     })
     
   }
@@ -34,7 +38,35 @@ export class HomeComponent implements OnInit {
       for (const movie of movies) {
 
         if(movie.role === 'NOW-PLAYING'){
-          this.movies.push(movie);
+          this.moviesNow.push(movie);
+       }
+      }
+
+    }
+  }
+
+  getPremiere(movies:Movie[]){
+
+    if(movies.length > 0){
+ 
+      for (const movie of movies) {
+
+        if(movie.role === 'PREMIERE'){
+          this.moviesPremier.push(movie);
+       }
+      }
+
+    }
+  }
+
+  getSoon(movies:Movie[]){
+
+    if(movies.length > 0){
+ 
+      for (const movie of movies) {
+
+        if(movie.role === 'COMING-SOON'){
+          this.moviesSoon.push(movie);
        }
       }
 

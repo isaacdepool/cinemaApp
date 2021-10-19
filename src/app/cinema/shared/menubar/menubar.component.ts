@@ -66,7 +66,7 @@ export class MenubarComponent implements OnInit {
         redirecTo: 'now-playing'
       },
       {
-        label: 'Premiers',
+        label: 'Premieres',
         redirecTo: 'premieres'
       },
       {
