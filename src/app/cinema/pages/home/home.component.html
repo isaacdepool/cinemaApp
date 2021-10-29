@@ -145,8 +145,8 @@
             <h3 class="sy">{{moviesSoon[0].name |titlecase}}</h3>
             <p class="sy">{{moviesSoon[0].synopsis}}</p>
     
-              <button routerLink="/premieres"
-                class="btn btn-outline-danger comming">Comming Soon...</button>
+              <button (click)="redirecTo(moviesSoon[0])"
+                class="btn btn-outline-danger comming">Coming Soon...</button>
           </div>
         </div>
       </div>
@@ -161,7 +161,7 @@
             <h3 class="sy">{{moviesSoon[1].name |titlecase}}</h3>
             <p class="sy">{{moviesSoon[1].synopsis}}</p>
     
-              <button routerLink="/premieres"
+              <button (click)="redirecTo(moviesSoon[1])"
                 class="btn btn-outline-danger comming">Comming Soon...</button>
           </div>
         </div>
