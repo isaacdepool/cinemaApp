@@ -1,6 +1,10 @@
-# CinemaApp
+# CinemaApp (Depool Cinema)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.0.
+
+## WEB
+
+https://depool-cinema.herokuapp.com/
 
 ## Development server
 
