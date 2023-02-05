@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## WEB
 
-https://depool-cinema.herokuapp.com/
+https://depool-cinema.glitch.me
 
 ## Development server
 
